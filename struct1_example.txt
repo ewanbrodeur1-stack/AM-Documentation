@@ -1,0 +1,121 @@
+#
+#   NAME:
+#
+#      kcs_ex_struct1.py
+#
+#   PUPOSE:
+#
+#      This example will create a structure with 2 parts.
+#      The first part is a plate with a hole
+#      The second part is a profile with endcuts
+#
+import kcs_ui
+import kcs_struct
+import KcsPoint3D
+import KcsVector3D
+import KcsPoint2D
+import KcsContour2D
+
+try:
+   structName = kcs_ui.string_req('Key in name of structure')
+   try:
+      modName = kcs_ui.string_req('Key in name of module')
+      try:
+#
+#        Create structure with object
+#
+         struct = kcs_struct.struct_new(structName[1], modName[1], 'White')
+#
+#        Create a plate with thickness 3.0
+#        The contour is a rectangle where one side is a arc
+#
+ try:
+            plateComp = kcs_struct.pseudoname_plate(3.0)
+            oriPoint  = KcsPoint3D.Point3D(1000.0, 1000.0, 1000.0)
+            normal    = KcsVector3D.Vector3D(1.0, 0.0, 0.0)
+            rotation  = KcsVector3D.Vector3D(0.0, 1.0, 0.0)
+            point     = KcsPoint2D.Point2D(0.0,0.0)
+            cont      = KcsContour2D.Contour2D(point)
+            point.X   = 1000.0
+            cont.AddLine(point)
+            point.Y   = 1000.0
+            cont.AddLine(point)
+            point.X   = 0.0
+            cont.AddArc(point,250)
+            point.Y   = 0.0
+            cont.AddLine(point)
+            try:
+               platePart = kcs_struct.plate_new_contour2D
+                          (plateComp, oriPoint, normal, rotation, cont)
+#
+#              Create a hole 200*300 in the plate
+#
+               try:
+                  holeComp = kcs_struct.pseudoname_hole(200, 300)
+                  oriPoint.SetCoordinates(1500.0, 1500.0, 1500.0)
+                  rotation.SetComponents(0.5,0.5,0.5)
+                  try:
+                     holePart = kcs_struct.hole_new(holeComp, platePart, oriPoint, rotation)
+
+except:
+                     print 'Error when creating hole'
+                     print kcs_struct.error
+               except:
+                  print 'Error when creating the pseudo name for hole'
+                  print kcs_struct.error
+           except:
+               print 'Error when creating plate'
+               print kcs_struct.error
+         except:
+            print 'Error when creating the pseudo name for plate'
+            print kcs_struct.error
+#
+#        Create a profile of type flat bar 200*10
+#        Add endcuts
+#
+         try:
+            profileComp = kcs_struct.pseudoname_profile('F', 200, 10)
+            startPoint  = KcsPoint3D.Point3D(1000.0, 0.0, 0.0)
+            endPoint    = KcsPoint3D.Point3D(1000.0, 1000.0, 0.0)
+            rotation    = KcsVector3D.Vector3D(1.0, 0.0, 0.0)
+            try:
+               profilePart = kcs_struct.profile_new_2point3D
+                            (profileComp, startPoint, endPoint, rotation)
+               try:
+                  profileEndcut = kcs_struct.profile_endcut
+                                 (profilePart, startPoint, 1112, 80.0)
+               except:
+                  print 'Error when creating endcut in start point'
+                  print kcs_struct.error
+               try:
+                  profileEndcut = kcs_struct.profile_endcut
+                                (profilePart, endPoint, 1112, 80.0)
+               except:
+                  print 'Error when creating endcut in end point'
+                  print kcs_struct.error
+            except:
+               print 'Error when creating profile'
+               print kcs_struct.error
+
+
+except:
+            print 'Error when creating the pseudo name for profile'
+            print kcs_struct.error
+#
+#        Save the structure
+#
+         try:
+            save = kcs_struct.struct_save()
+            print 'Structure ready and saved'
+         except:
+            print 'Error when saving structure'
+            print kcs_struct.error
+      except:
+         print 'Error when creating a new structure'
+         print kcs_struct.error
+  except:
+     print 'Invalid input of module name'
+     print kcs_struct.error
+except:
+   print 'Invalid input of structure name'
+   print kcs_struct.error

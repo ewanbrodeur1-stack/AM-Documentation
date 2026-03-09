@@ -1,0 +1,209 @@
+
+
+
+    <Company name via SB_YARD>                            Plate Jigs
+    SF821D                                                Date:  01-04-23                              Page  01
+
+    Panel: BLOCK3-CURVED5
+
+
+
+
+
+
+     Height of the jigs above the assembly plane
+
+     Edge 1  Cutout  Edge 2  Jig name                     Edge 1  Cutout  Edge 2  Jig name
+
+       1791    1869    1828  BLOCK3-CURVED5-A1              1580    1475    1367  BLOCK3-CURVED5-A2
+       1070    1022    1069  BLOCK3-CURVED5-A3              1638    1694    1648  BLOCK3-CURVED5-B1
+       1423    1334    1247  BLOCK3-CURVED5-B2              1053    1031    1150  BLOCK3-CURVED5-B3
+       1258    1269    1237  BLOCK3-CURVED5-C1              1140    1111    1093  BLOCK3-CURVED5-C2
+       1117    1164    1474  BLOCK3-CURVED5-C3              1153    1162    1140  BLOCK3-CURVED5-D1
+       1093    1087    1092  BLOCK3-CURVED5-D2              1174    1245    1616  BLOCK3-CURVED5-D3
+
+
+
+
+    <Company name via SB_YARD>                            Plate Jigs
+    SF821D                                                Date:  01-04-23                              Page  02
+
+    Panel: BLOCK3-CURVED5
+
+
+
+
+
+
+     The corners of the panel
+
+
+     No  Distance from jig row A   Distance from sight line   Height
+                    (X)                       (Y)               (Z)
+
+      1             -575                      -687              1791
+      2             8465                      1663              1112
+      3             8320                     12042              1791
+      4             -430                     10972              1112
+
+
+     Distance to the jig rows (accumulated values)
+
+            A     B     C     D     E     F     G     H     I     J     K     L     M     N     O
+
+            0  1600  6315  7915     0     0     0     0     0     0     0     0     0     0     0
+
+
+
+     Distance from the sight line to the marked side of the jigs = edge 1
+
+     No     A     B     C     D     E     F     G     H     I     J     K     L     M     N     O
+
+      1     0   443  1680  2077     0     0     0     0     0     0     0     0     0     0     0
+      2  4618  5053  6160  6490     0     0     0     0     0     0     0     0     0     0     0
+      3  7781  8081  8867  9102     0     0     0     0     0     0     0     0     0     0     0
+
+
+
+
+    <Company name via SB_YARD>                            Plate Jigs
+    SF821D                                                Date:  01-04-23                              Page  03
+
+    Panel: BLOCK3-CURVED5
+
+
+
+
+
+
+     Angle between frame plane and assembly plane             =   78.0 ( 101.9) degrees =   86.6 ( 113.3) gon
+
+     Angle between waterline plane and assembly plane         =   48.5 ( 131.4) degrees =   53.8 ( 146.1) gon
+
+     The angles are calculated on the aft or bottom (stem or top) side of planes
+
+
+
+     Contour length from DS4S503
+     to jig row A along seam or butt.
+
+     Length  Seam or butt
+
+      -600   DS4S202
+      -636   DS4S203
+      -542   DS4S204
+      -419   DS4S205
+      -436   DS4S206
+
+     The contour lengths are negative on the aft and bottom side of the jig row
+    <Company name via SB_YARD>                            Distances from reference lines
+    SF821D                                                Date:  01-04-23                              Page  04
+
+    Panel:BLOCK3-CURVED5
+
+    Distances from reference lines between the corners of the panel
+
+    Corner1-Corner2
+    ***************
+
+    Measures along reference line              Seam/FR/Y/Z    Distance
+
+         0                                                       -0.9
+       325                                    FR40               -6.2
+      1054                                    10000             -17.3
+      4637                                    FR45              -41.0
+      9340                                                        0.0
+
+
+    Corner2-Corner3
+    ***************
+
+    Measures along reference line              Seam/FR/Y/Z    Distance
+
+         0                                                        0.0
+      2736                                    Seam203            34.1
+      5535                                    Seam204            83.2
+      6068                                    9000               88.0
+      8110                                    Seam205            78.3
+     10379                                                        0.0
+
+
+    Corner3-Corner4
+    ***************
+
+    Measures along reference line              Seam/FR/Y/Z    Distance
+
+         0                                                        0.0
+      4439                                    FR45               51.9
+      8509                                    FR40                6.9
+      8815                                                        0.0
+
+
+    Corner4-Corner1
+    ***************
+
+    Measures along reference line              Seam/FR/Y/Z    Distance
+    <Company name via SB_YARD>                            Distances from reference lines
+    SF821D                                                Date:  01-04-23                              Page  05
+
+    Panel:BLOCK3-CURVED5
+
+    Distances from reference lines between the corners of the panel
+
+         0                                                        0.0
+      2670                                    Seam205           -52.1
+      5237                                    9000               -3.5
+      5902                                    Seam204            15.4
+      9046                                    Seam203            64.1
+     10961                                    10000              25.1
+     11660                                                        0.0
+
+
+    Angles between reference lines
+
+    Corner   Deg
+
+     1     74.71
+     2    103.77
+     3     83.83
+     4     97.67
+    <Company name via SB_YARD>                            Lowest plate of curved panel on jigs
+    SF821D                                                Date:  01-04-23                              Page  06
+
+    Panel:BLOCK3-CURVED5
+
+
+
+    Lowest plate   Pos.No:501   Plate.No:2
+
+    The coordinates of the corners in the assembly plane
+
+      X       Y
+
+      -606    1927
+
+      8460    4400
+
+      8470    7199
+
+      -519    5070
+
+    <Company name via SB_YARD>                            Automatic welding of curved panel on jigs
+    SF821D                                                Date:  01-04-23                              Page  07
+
+    Panel:BLOCK3-CURVED5
+
+    Measures along seams for welding
+
+    ALONG      FROM      FROM     TO   LENGTH    FROM     TO    LENGTH   TOT.LENGTH   TOT.LENGTH    TOT.LENGTH
+     SEAM      SEAM                                                        AUT WELD    MAN. WELD  AUT+MAN. WELD
+
+      203      5555         0   9436     9436                                  9436            0          9436
+
+      204      5555         0   9256     9256                                  9256            0          9256
+
+      205      5555         0   8969     8969                                  8969            0          8969
+
+
+
+                                                 Total welding lengths  (M)    27.6          0.0          27.6

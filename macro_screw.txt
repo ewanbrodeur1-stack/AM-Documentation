@@ -1,0 +1,98 @@
+MACRO, SCREW, DWG_NAME;
+  DECLARE, DWG_NAME, STRING;
+  NAME, DWG_NAME
+    /DWG
+    /FORM='A3'
+    /SCALE=1.0;
+  GET/DISTANCE =('Length of screw: ', LS)
+     /DISTANCE =('Diameter of screw: ', DS)
+     /POINT_2D =('Startpoint: ', STP);
+  !
+  !  Assign some parameters
+  !
+  ASSIGN, DM, DS*1.8;
+  ASSIGN, DH, DM*7%9.0;
+  ASSIGN, TM, DM*0.4;
+  ASSIGN, LM, DM*5%18.0;
+  ASSIGN, L2, LS*0.1;
+  ASSIGN, TH, TM;
+  ASSIGN, SK, TH*2%7.0;
+  ASSIGN, D, COSD(45);
+  ASSIGN, T, DH%2;
+  ASSIGN, X, STP/XCOORD;
+  ASSIGN, Y, STP/YCOORD;
+  ASSIGN, SKX, X+DH%2-SK%2;
+  ASSIGN, SKY, Y+TH;
+  !
+  !  Create a contour for the screw head
+  !
+  POINT_2D, P1, X, Y;
+  POINT_2D, P2, X+DH, Y;
+  POINT_2D, P3, X+T*(1+D), Y+T*D;
+  POINT_2D, P4, SKX+SK, SKY;
+  POINT_2D, P5, SKX+SK, SKY-SK;
+  POINT_2D, P6, SKX, SKY-SK;
+  POINT_2D, P7, SKX, SKY;
+  POINT_2D, P8, X+T*(1-D), Y+T*D;
+  CONTOUR, CNT1, P1
+   /LINEEND=P2
+   /ARCMIDPNT=(P3, P4)
+   /LINEEND=(P5)
+   /LINEEND=(P6)
+   /LINEEND=(P7)
+   /ARCMIDPNT=(P8, P1);
+  PRESENT, CNT1;
+  !
+  !  Create screw down to the nut
+  !
+  ASSIGN, SX, X+DH%2-DS%2;
+  ASSIGN, SY, Y;
+  POINT_2D, PS1, SX, SY;
+  POINT_2D, PS2, SX, SY-LS;
+  LINE, L1, PS1/LINEEND=PS2;
+  PRESENT, L1;
+  POINT_2D, PS3, SX+DS, SY;
+  POINT_2D, PS4, SX+DS, SY-LS;
+  LINE, L3, PS3/LINEEND=PS4;
+  PRESENT, L3;
+  !
+  !  Create nut
+  !
+  ASSIGN, MX, SX+DS%2-DM%2;
+  ASSIGN, MY, SY-LS-TM;
+  POINT_2D, PM1, MX, MY;
+  POINT_2D, PM2, MX, MY+TM;
+  POINT_2D, PM3, MX+DM, MY+TM;
+  POINT_2D, PM4, MX+DM, MY;
+  CONTOUR, CNT2, PM1
+   /LINEEND=PM2
+   /LINEEND=PM3
+   /LINEEND=PM4
+   /LINEEND=PM1;
+  PRESENT, CNT2;
+  !
+  !  Create rest of the screw
+  !
+  POINT_2D, PM5, MX+LM, MY;
+  POINT_2D, PM6, MX+LM, MY+TM;
+  LINE, L4, PM5/LINEEND=PM6;
+  PRESENT, L4;
+  POINT_2D, PM7, MX+DM-LM, MY;
+  POINT_2D, PM8, MX+DM-LM, MY+TM;
+  LINE, L5, PM7/LINEEND=PM8;
+  PRESENT, L5;
+  ASSIGN, CX, SX;
+  ASSIGN, CY, MY;
+  POINT_2D, PC1, CX, CY;
+  POINT_2D, PC2, CX, CY-L2;
+  CONTOUR, CNT3, PC1
+   /LINEEND=PC2
+   /LINEANGLE=(DS%2*SQRT(2), -45);
+  PRESENT, CNT3;
+  POINT_2D, PC3, CX+DS, CY;
+  POINT_2D, PC4, CX+DS, CY-L2;
+  CONTOUR, CNT4, PC3
+   /LINEEND=PC4
+   /LINEANGLE=(DS%2*SQRT(2), -135);
+  PRESENT, CNT4;
+ENDMACRO;
