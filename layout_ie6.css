@@ -1,0 +1,296 @@
+
+/* Layout Stylesheet */ 
+
+body {
+
+ background:#000000;
+ color: #333333;
+ /*text-align:center; */
+ /*padding:0; */
+
+ PADDING-BOTTOM: 0px; 
+BACKGROUND-COLOR: #5780AE; 
+MARGIN: 0px;
+ PADDING-LEFT: 0px;
+ PADDING-RIGHT: 0px;
+ BACKGROUND-REPEAT: repeat-y; 
+FONT-FAMILY: Arial, Helvetica, sans-serif; 
+BACKGROUND-POSITION: center;
+top; HEIGHT: 100%; COLOR: #333333; FONT-SIZE: 70%; PADDING-TOP: 0px
+width:990px
+
+ }
+
+H1 {
+	PADDING-BOTTOM: 3px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #ffffff; FONT-SIZE: x-large; FONT-WEIGHT: normal; PADDING-TOP: 8px;
+text-align:left;
+}
+
+.copyright {
+			color : #ffffff;
+			font-size : 10px;
+			font-weight : normal;
+			padding-left : 0px; }
+
+#outer {
+filter:blendTrans(duration=3) ;
+ text-align:left;
+ border:0px solid #000000;
+ width:990px;
+overflow: hidden;
+ background-image:url(image0.gif); 
+
+ 
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-position:0px 95px;
+
+
+
+ }
+
+#hdr {
+ height:95px;
+ background:#5780AE;
+ COLOR: #ffffff;
+ background-image:url(header_aveva_marine.gif);
+overflow: hidden;
+ }
+
+#bar {
+ height:25px;
+ background:#C8DBEB;
+ color: #C8DBEB;
+ border:solid #000000;	
+ border-width:0px 0 1px 0;
+ 
+ }
+
+#bodyblock {
+ position:relative;
+
+ color: #ffffff;
+ 
+ padding:0;
+overflow: hidden;
+
+ }
+
+#l-col {
+
+
+
+ color: #333333;
+background-color: transparent;
+ width:180px;
+
+ 
+
+
+ }
+
+#cont {
+ width:800px;
+overflow: hidden;
+ 
+ color: #333333;
+ border:solid #000000;	
+ border-width:0 0 0 0px;
+ text-align:left;
+height:418px;
+MARGIN: 0px ;
+
+ }
+
+#ftr {
+
+
+ height:25px;
+ background:#5780AE;
+ color: #ffffff;
+ border:solid black;
+ border-width:0px 0 0 0;
+ margin:0;
+
+
+
+ }
+
+
+/* Menu Stylesheet */ 
+
+
+
+
+.sidebarmenu ul{
+clear: both;
+margin: 0;
+padding: 0;
+list-style-type: none;
+vertical-align: top;
+font: bold 12px Arial, Helvetica, sans-serif ;
+
+width: 124px; /* Main Menu Item widths */
+
+
+background-color: #000000;
+
+border-bottom: 0px solid #ffffff;
+
+border-right: 0px solid #ffffff;
+
+
+padding-top:0px;
+padding-bottom:0px;
+padding-right:2px;
+padding-left:2px;
+
+
+display: inline-block; /* ie6 position properly */
+
+}
+ 
+.sidebarmenu ul li{
+ position: relative; 
+zoom:1;
+border-bottom: 0px solid #ffffff; /* seperator on scaled cells*/
+
+
+width: auto; /* width of the second column */
+white-space:nowrap;
+
+overflow: visible; /*force hasLayout in IE7 */
+top: 0;
+}
+
+/* Top level menu links style */
+
+.sidebarmenu ul li a{
+float: left;
+overflow: visible; /*force hasLayout in IE7 */
+color: white;
+text-decoration: none;
+
+
+padding: 6px;
+border-bottom: 1px solid #778;
+border-right: 1px solid #778;
+
+
+    margin-left: auto;
+    margin-right: auto;
+width: 100%;/* Width for arrow > button */
+white-space:nowrap;
+}
+
+.sidebarmenu ul li a:link, .sidebarmenu ul li a:visited, .sidebarmenu ul li a:active{
+background-color: #000000; /*background of tabs (default state)*/
+}
+
+.sidebarmenu ul li a:visited{
+color: white;
+}
+
+.sidebarmenu ul li a:hover{
+background-color: #00B5E4;
+}
+
+
+.sidebarmenu ul li a:focus{
+background-color: #00B5E4;
+}
+
+.sidebarmenu ul li a.sffocus{
+background-color: #00B5E4;
+}
+
+
+/*Sub level menu items */
+.sidebarmenu ul li ul{
+
+position: absolute;
+min-width: 120px;
+height: 100%;
+width: auto !important; /* width of the second column */
+_width: 130px;
+top: 0;
+visibility: hidden;
+
+white-space:nowrap;
+}
+
+
+
+
+/*Sub level menu items */
+.sidebarmenu ul li  li ul{
+
+
+width: auto; /* width of the third column */
+_width: 145px;
+min-width: 130px;
+top: 0;
+visibility: hidden;
+white-space:nowrap;
+
+}
+
+
+/*Sub level menu items */
+.sidebarmenu ul li li li ul{
+
+
+width: auto; /* width of the fourth column - check */
+
+_width: 146px;
+min-width: 130px;
+top: 0;
+visibility: hidden;
+white-space:nowrap;
+
+}
+
+
+/*Sub level menu items */
+.sidebarmenu ul li li li ul li ul{
+
+
+width: auto; /* width of the fifth column */
+_width: 140px;
+ min-width: 130px;  
+
+top: 0;
+visibility: hidden;
+margin-left: auto;
+    margin-right: auto;
+white-space:nowrap;
+
+}
+
+/*Sub level menu items */
+.sidebarmenu ul li li li ul li li ul{
+
+
+width: auto; /* width of the fifth column */
+_width: 200px;
+margin-left: auto;
+    margin-right: auto;
+min-width: 150px;
+top: 0;
+visibility: hidden;
+
+
+
+}
+
+.sidebarmenu a.subfolderstyle{
+background: url(right.gif) no-repeat 97% 50%;
+}
+
+ 
+/* Holly Hack for IE \*/
+* html .sidebarmenu ul li { float: left; height: 1%; }
+* html .sidebarmenu ul li a { height: 1%; }
+/* End */
+
+

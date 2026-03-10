@@ -1,0 +1,276 @@
+
+/* Layout Stylesheet */ 
+
+body {
+
+ background:#000000;
+ color: #333333;
+ /*text-align:center; */
+ /*padding:0; */
+
+ PADDING-BOTTOM: 0px; 
+BACKGROUND-COLOR: #5780AE; 
+MARGIN: 0px;
+ PADDING-LEFT: 0px;
+ PADDING-RIGHT: 0px;
+ BACKGROUND-REPEAT: repeat-y; 
+FONT-FAMILY: Arial, Helvetica, sans-serif; 
+BACKGROUND-POSITION: center;
+top; HEIGHT: 100%; COLOR: #333333; FONT-SIZE: 70%; PADDING-TOP: 0px
+width:990px
+
+ }
+
+H1 {
+	PADDING-BOTTOM: 3px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #ffffff; FONT-SIZE: x-large; FONT-WEIGHT: normal; PADDING-TOP: 8px;
+text-align:left;
+}
+
+.copyright {
+			color : #ffffff;
+			font-size : 10px;
+			font-weight : normal;
+			padding-left : 0px; }
+
+#outer {
+filter:blendTrans(duration=3) ;
+ text-align:left;
+ border:0px solid #000000;
+ width:990px;
+overflow: hidden;
+ background-image:url(image0.gif); 
+
+ 
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-position:0px 95px;
+
+
+
+ }
+
+#hdr {
+ height:95px;
+ background:#5780AE;
+ COLOR: #ffffff;
+ background-image:url(header_aveva_marine.gif);
+overflow: hidden;
+ }
+
+#bar {
+ height:25px;
+ background:#C8DBEB;
+ color: #C8DBEB;
+ border:solid #000000;	
+ border-width:0px 0 1px 0;
+ 
+ }
+
+#bodyblock {
+ position:relative;
+
+ color: #ffffff;
+ 
+ padding:0;
+overflow: hidden;
+
+ }
+
+#l-col {
+ float:left;
+
+ color: #333333;
+ width:180px;
+
+ 
+
+
+ }
+
+#cont {
+ width:800px;
+overflow: hidden;
+ 
+ color: #333333;
+ border:solid #000000;	
+ border-width:0 0 0 0px;
+ text-align:left;
+height:450px;
+MARGIN: 0px ;
+
+ }
+
+#ftr {
+
+
+ height:25px;
+ background:#5780AE;
+ color: #ffffff;
+ border:solid black;
+ border-width:0px 0 0 0;
+ margin:0;
+
+
+
+ }
+
+
+/* Menu Stylesheet */ 
+
+
+
+
+.sidebarmenu ul{
+float:left;
+margin: 0;
+padding: 0;
+list-style-type: none;
+
+font: bold 12px Arial, Helvetica, sans-serif ;
+
+width: 115px; /* Main Menu Item widths */
+
+
+background-color: #000000;
+
+
+
+
+
+border-bottom: 50px solid transparent;
+
+
+  
+padding-top:0px;
+padding-bottom:0px;
+padding-right:0px;
+padding-left:0px;
+text-align:left
+
+}
+ 
+.sidebarmenu ul li{
+ position: relative; 
+
+
+
+}
+
+/* Top level menu links style */
+
+
+.sidebarmenu ul li a{
+clear: both;
+float: left;
+overflow: auto; /*force hasLayout in IE7 */
+color: white;
+text-decoration: none;
+margin: 0;
+width: 100%;/* Width for arrow > button */
+white-space:nowrap;
+
+padding-top:5px;
+padding-bottom:5px;
+padding-right:5px;
+padding-left:5px;
+
+}
+
+
+.sidebarmenu ul li a:link, .sidebarmenu ul li a:visited, .sidebarmenu ul li a:active{
+background-color: #000000; /*background of tabs (default state)*/
+}
+
+.sidebarmenu ul li a:visited{
+color: white;
+}
+
+.sidebarmenu ul li a:hover{
+background-color: #00B5E4;
+}
+
+.sidebarmenu ul li a:focus{
+background-color: #00B5E4;
+}
+
+.sidebarmenu ul li a.sffocus{
+background-color: #00B5E4;
+}
+
+/*Sub level menu items */
+.sidebarmenu ul li ul{
+
+position: absolute; 
+
+
+
+width: auto; /* width of the second column */
+
+visibility: hidden;
+
+
+
+}
+
+
+/*Sub level menu items */
+.sidebarmenu ul li  li ul{
+
+overflow: visible;
+white-space:nowrap;
+width: auto; /* width of the third column */
+min-width: 146px;
+top: 0;
+visibility: hidden;
+
+}
+
+
+/*Sub level menu items */
+.sidebarmenu ul li li li ul{
+
+
+
+width: auto; /* width of the fourth column */
+min-width: 176px;
+
+top: 0;
+visibility: hidden;
+overflow: visible;
+white-space:nowrap;
+}
+
+
+/*Sub level menu items */
+.sidebarmenu ul li li li ul li ul{
+
+
+width: auto; /* width of the fifth column */
+
+top: 0;
+visibility: hidden;
+margin-left: auto;
+    margin-right: auto;
+white-space:nowrap;
+
+}
+
+
+
+
+.sidebarmenu a.subfolderstyle{
+background: url(right.gif) no-repeat 97% 50%;
+}
+
+ 
+/* Holly Hack for IE \*/
+* html .sidebarmenu ul li { float: left; height: 1%; }
+* html .sidebarmenu ul li a { height: 1%; }
+/* End */
+
+/* --Below CSS handles hover effects. Currently not used fully because of JS code for IE6 compatability-- */
+
+
+/* when hovering on first group display second but hide the rest (AVEVA Plant level)*.sidebarmenu li:hover ul  {visibility: visible;} 
+
+/* when hovering on third group display fourth but hide the rest(Diagrams level)*/
