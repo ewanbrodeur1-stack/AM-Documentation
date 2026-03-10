@@ -1,0 +1,626 @@
+#  The following example creates eleven different kind of notes.
+#! /usr/local/bin/python
+#
+
+import string
+import kcs_dex
+import kcs_ui
+import kcs_util
+import KcsProfSymb
+from KcsConfNoteRec import *
+
+ok = kcs_util.success()
+not_ok = kcs_util.failure()
+
+#------------------------------------------------------------------------------
+#  NoteName - the list of note names to select from
+#
+#  !! Please make sure that the list of note names end with an empty string
+#     as this is used as the signal to terminate the reading of names !!
+#------------------------------------------------------------------------------
+NoteName = (
+  " Pipe note",
+  " Valve note",
+  " Ventilation note",
+  " Pipe spool note",
+  " Cable way note",
+  " Structure note",
+  " Equipment note",
+  " Plate note",
+  " Profile note",
+  " Bracket note",
+  " Bracket profile note",
+  ""
+)
+
+#------------------------------------------------------------------------------
+#  NoteChar - the list of note characteristic records for each note
+#------------------------------------------------------------------------------
+NoteChar = (
+  ("infirst", "AutoAuto", "white", 200, 120),
+  ("infirst", "AutoAuto", "red", 200, 120),
+  ("inlongest", "AutoAuto", "white", 200, 120),
+  ("midlongest", "MidAuto", "white", 200, 120),
+  ("midlongest", "MidMid", "white", 200, 120),
+  ("COG", "MidMid", "white", 200, 120),
+  ("COG", "MidMid", "white", 200, 120),
+  ("COG", "MidMid", "cyan", 200, 120),
+  ("MidPoint", "MidOrigin", "white", 200, 120),
+  ("COG", "MidMid", "cyan", 200, 120),
+  ("MidPoint", "MidOrigin", "white", 200, 120),
+)
+
+#------------------------------------------------------------------------------
+#  NoteFilter - the list of pick filters for each note
+#
+#  !! Note that a one-item tuple in python must end with a comma !!
+#------------------------------------------------------------------------------
+NoteFilter = (
+  (
+    ("pipe", "", ""),
+  ),
+  (
+    ("pipe", "part", ""),
+  ),
+  (
+    ("ventilation", "", ""),
+  ),
+  (
+    ("pipe spool", "", ""),
+  ),
+  (
+    ("cable way", "", ""),
+  ),
+  (
+    ("struct", "", ""),
+  ),
+  (
+    ("equipment", "", ""),
+  ),
+  (
+    ("plane panel", "plate", ""),
+  ),
+  (
+    ("plane panel", "stiffener", ""),
+    ("plane panel", "flange", ""),
+  ),
+  (
+    ("plane panel", "bracket", ""),
+  ),
+  (
+    ("plane panel", "bracket", "stiffener"),
+    ("plane panel", "bracket", "flange"),
+  ),
+)
+
+NoteData = []
+
+#-----------------------------------------------------------------------------
+#  Interface methods - must not be changed regading input parameters & returns
+#-----------------------------------------------------------------------------
+def getNoteName(NoteNo):
+  try:
+    return NoteName[NoteNo]
+  except:
+    return None
+
+def getNoteChar(NoteNo):
+  try:
+    return NoteChar[NoteNo]
+  except:
+    return None
+
+def getNoteFilter(NoteNo,FilterNo):
+  try:
+    return NoteFilter[NoteNo][FilterNo]
+  except:
+    return None
+
+def getNoteData(ItemNo):
+  try:
+    return NoteData[ItemNo]
+  except:
+    return None
+
+#-----------------------------------------------------------------------------
+#  Help methods to ease data extraction calls used below
+#-----------------------------------------------------------------------------
+def getIntegerValue(est):
+  int = -9999;
+  res = kcs_dex.extract(est)
+  if res == ok:
+    typ = kcs_dex.next_result()
+    if typ == 1:
+      int = kcs_dex.get_int()
+  return int
+
+def getRealValue(est):
+  real = -999999.99;
+  res = kcs_dex.extract(est)
+  if res == ok:
+    typ = kcs_dex.next_result()
+    if typ == 2:
+      real = kcs_dex.get_real()
+  return real
+
+def getStringValue(est):
+  string = "****"
+  res = kcs_dex.extract(est)
+  if res == ok:
+    typ = kcs_dex.next_result()
+    if typ == 3:
+      string = kcs_dex.get_string()
+  return string
+
+def getReaListValue(est):
+  retval = [0];
+  res = kcs_dex.extract(est)
+  if res == ok:
+    typ = kcs_dex.next_result()
+    if typ > 10:
+      retval = [typ-10]
+      for i in range(typ-10):
+        retval.append(kcs_dex.get_indexedreal(i))
+  return retval
+
+#-----------------------------------------------------------------------------
+#  getCompInd - to get a component index from a component number
+#               to be used in data extraction
+#-----------------------------------------------------------------------------
+def getCompInd( Model, PartType, Part, SubPartType, SubPart):
+  inds = []
+  compind = 0
+  subcompind = 0
+  est = "HULL.PANEL('" + Model + "')." + PartType + "(" + str(divmod(abs(Part),1000)[1]) + ").COMP_ID"
+  comp_no = getIntegerValue(est)
+  if comp_no == Part:
+    compind = divmod(abs(Part),1000)[1]
+  else:
+    est = "HULL.PANEL('" + Model + "').N" + PartType
+    no_of = getIntegerValue(est)
+    for no in range( 1, no_of, 1):
+      est = "HULL.PANEL('" + Model + "')." + PartType + "(" + str(no) + ").COMP_ID"
+      comp_no = getIntegerValue(est)
+      if comp_no == Part:
+        compind = no
+        break
+  if SubPartType != "":
+    est = "HULL.PANEL('" + Model + "')." + PartType + "(" + str(compind) + ")." + SubPartType + "(" +
+
+str(divmod(abs(SubPart),1000)[1]) + ").COMP_ID"
+    subcomp_no = getIntegerValue(est)
+    if subcomp_no == SubPart:
+      subcompind = divmod(abs(SubPart),1000)[1]
+    else:
+      est = "HULL.PANEL('" + Model + "')." + PartType + "(" + str(compind) + ").N" + SubPartType
+      no_of = getIntegerValue(est)
+      for no in range( 1, no_of, 1):
+        est = "HULL.PANEL('" + Model + "')." + PartType + "(" + str(compind) + ")." + SubPartType + "(" + str(no) +
+
+").COMP_ID"
+        comp_no = getIntegerValue(est)
+        if comp_no == SubPart:
+          subcompind = no
+          break
+
+  inds.append( compind)
+  inds.append( subcompind)
+  return inds
+
+#-----------------------------------------------------------------------------
+#  createProfNote - create a profile note
+#-----------------------------------------------------------------------------
+def createProfNote( Model, PartType, Part, SubPartType, SubPart):
+  global NoteData
+
+  inds = getCompInd( Model, PartType, Part, SubPartType, SubPart)
+  if SubPartType == "":
+    flange_type = 0
+    if PartType == "FLA":
+      est = "HULL.PANEL('" + Model + "')." + PartType + "(" + str(inds[0]) + ").TYPE"
+      flange_type = getIntegerValue(est)
+
+#  Folded flange
+
+    if abs(flange_type) == 1:
+      est = "HULL.PANEL('" + Model + "')." + PartType + "(" + str(inds[0]) + ").HEIGHT"
+      txt = str(int(getRealValue(est))) + " FL"
+      text = Text( text=txt, v=0.5)
+      NoteData.append(text.getRecord())
+
+#  Welded profile
+
+    else:
+      est = "HULL.PANEL('" + Model + "')." + PartType + "(" + str(inds[0]) + ").PRO.TYPE"
+      typ = getIntegerValue(est)
+      symbno = KcsProfSymb.getSymb(typ)
+      symb = Symbol( font=8, number=symbno, height=10, conn=1, v=0.5, mirr=2)
+      NoteData.append(symb.getRecord())
+      est = "HULL.PANEL('" + Model + "')." + PartType + "(" + str(inds[0]) + ").PRO.PAR"
+      par = getReaListValue(est)
+      txt = " "
+      for i in range(par[0]):
+        spar = str(par[i+1])
+        if spar[-2:] == ".0":
+          spar = spar[:-2]
+        txt = txt + (spar + "*")
+      text = Text( text=txt[:-1], v=0.5)
+      NoteData.append(text.getRecord())
+      est = "HULL.PANEL('" + Model + "')." + PartType + "(" + str(inds[0]) + ").QUALITY.STRING"
+      qual = " " + getStringValue(est)
+      qualtext = Text( text=qual, v=0.5)
+      NoteData.append(qualtext.getRecord())
+
+#  Profile on brackets
+
+  else:
+    flange_type = 0
+    if SubPartType == "FLA":
+      est = "HULL.PANEL('" + Model + "')." + PartType + "(" + str(inds[0]) + ")." + SubPartType + "(" + str(inds[1])
+
++ ").TYPE"
+      flange_type = getIntegerValue(est)
+
+#  Folded flange
+
+    if abs(flange_type) == 1:
+      est = "HULL.PANEL('" + Model + "')." + PartType + "(" + str(inds[0]) + ")." + SubPartType + "(" + str(inds[1])
+
++ ").HEIGHT"
+      height = getRealValue(est)
+      txt = str(int(height)) + " FL"
+      text = Text( text=txt, v=0.5)
+      NoteData.append(text.getRecord())
+
+#  Welded profile
+
+    else:
+      est = "HULL.PANEL('" + Model + "')." + PartType + "(" + str(inds[0]) + ")." + SubPartType + "(" + str(inds[1])
+
++ ").PRO.TYPE"
+      typ = getIntegerValue(est)
+      symbno = KcsProfSymb.getSymb(typ)
+      symb = Symbol( font=8, number=symbno, height=10, conn=1, v=0.5, mirr=2)
+      NoteData.append(symb.getRecord())
+      est = "HULL.PANEL('" + Model + "')." + PartType + "(" + str(inds[0]) + ")." + SubPartType + "(" + str(inds[1])
+
++ ").PRO.PAR"
+      par = getReaListValue(est)
+      txt = " "
+      for i in range(par[0]):
+        spar = str(par[i+1])
+        if spar[-2:] == ".0":
+          spar = spar[:-2]
+        txt = txt + (spar + "*")
+      text = Text( text=txt[:-1], v=0.5)
+      NoteData.append(text.getRecord())
+      est = "HULL.PANEL('" + Model + "')." + PartType + "(" + str(inds[0]) + ")." + SubPartType + "(" + str(inds[1])
+
++ ").QUALITY.STRING"
+      qual = " " + getStringValue(est)
+      qualtext = Text( text=qual, v=0.5)
+      NoteData.append(qualtext.getRecord())
+  return None
+
+#-----------------------------------------------------------------------------
+#  setNoteData - the Note definition method adding records to the NoteData list
+#-----------------------------------------------------------------------------
+def setNoteData(NoteNo,ModelType,Model,PartType,Part,SubPartType,SubPart):
+  global NoteData
+  NoteData = []
+
+#-----------------------------------------------------------------------------
+#  Pipe Note
+#-----------------------------------------------------------------------------
+  if NoteNo == 1:
+    ref = ReferenceSymbol(font=8, number=1)
+    NoteData.append(ref.getRecord())
+    if ModelType == "pipe":
+      SplitModel = string.splitfields(Model, '-')
+      Proj = SplitModel[0]
+      Mod = SplitModel[1]
+      SysLineNo = SplitModel[2]
+
+      # Get main component in pipe
+      #
+      est = "PIPE('" + Proj + "').PIPM('" + Mod + '-' + SysLineNo + "').MAN_P.APPL_N"
+      MainC = getStringValue(est)
+
+      # Get nominal diameter for main component
+      #
+      est = "COMP('" + MainC + "').PIPE.CON(1:2).NOMINAL"
+      NomDiam = getIntegerValue(est)
+
+      # Create notetext
+      #
+      txt = Mod + '-' + SysLineNo + '-' + str(NomDiam) + 'mm'
+      NoteText = Text(text=txt, height = 2.0, v=0.5)
+      NoteData.append(NoteText.getRecord())
+
+#-----------------------------------------------------------------------------
+#  Valve in pipe
+#-----------------------------------------------------------------------------
+  elif NoteNo == 2:
+    ref = ReferenceSymbol(font=8, number=1)
+    NoteData.append(ref.getRecord())
+    if ModelType == "pipe" and PartType == "part":
+      SplitModel = string.splitfields(Model, '-')
+      Proj = SplitModel[0]
+      Mod = SplitModel[1]
+      SysLineNo = SplitModel[2]
+
+      # Get component type
+      #
+      est = "PIPE('" + Proj + "').PIPM('" + Mod + '-' + SysLineNo + "').PART(" + str(Part) + ").COMP_T"
+      CompType = getIntegerValue(est)
+      CompTypeNo = divmod(CompType,1000)[0]
+
+      # Create notetext (CompTypeNo == 3 -> valve)
+      #
+      if CompTypeNo == 3:
+        est = "PIPE('" + Proj + "').PIPM('" + Mod + '-' + SysLineNo + "').PART(" + str(Part) + ").COMP_N"
+        CompName = getStringValue(est)
+        est = "PIPE('" + Proj + "').PIPM('" + Mod + '-' + SysLineNo + "').PART(" + str(Part) + ").MAN_P.POS"
+        PosNo = getStringValue(est)
+        txt = CompName + '/' + PosNo
+
+      # Create empty notetext for other parts (will not be placed in drawing)
+      #
+      else:
+        txt = ''
+      NoteText = Text( text=txt, height = 2.0, v=0.5)
+      NoteData.append(NoteText.getRecord())
+
+#-----------------------------------------------------------------------------
+#  Ventilation Note
+#-----------------------------------------------------------------------------
+  elif NoteNo == 3:
+    ref = ReferenceSymbol(font=8, number=1)
+    NoteData.append(ref.getRecord())
+    if ModelType == "ventilation":
+      NoteText = Text( text=Model, height = 2.0, v=0.5)
+      NoteData.append(NoteText.getRecord())
+
+#-----------------------------------------------------------------------------
+#  Pipe spool
+#-----------------------------------------------------------------------------
+  elif NoteNo == 4:
+    ref = ReferenceSymbol(font=8, number=1)
+    NoteData.append(ref.getRecord())
+    if ModelType == "pipe spool":
+      text = Text(text=Model, height = 2.0, v=0.5)
+      NoteData.append(text.getRecord())
+
+
+#-----------------------------------------------------------------------------
+#  Cableway
+#-----------------------------------------------------------------------------
+  elif NoteNo == 5:
+    ref = ReferenceSymbol(font=8, number=1)
+    NoteData.append(ref.getRecord())
+    if ModelType == "cable way":
+      SplitModel = string.splitfields(Model, '=')
+      Proj = SplitModel[0]
+      Name = SplitModel[1]
+      txt = Proj + '-' + Name
+      NoteText = Text( text=txt, height = 2.0, v=0.5)
+      NoteData.append(NoteText.getRecord())
+
+#-----------------------------------------------------------------------------
+#  Structure
+#-----------------------------------------------------------------------------
+  elif NoteNo == 6:
+    ref = ReferenceSymbol(font=8, number=1)
+    NoteData.append(ref.getRecord())
+    if ModelType == "struct":
+      NoteText = Text( text=Model, height = 2.0, v=0.5)
+      NoteData.append(NoteText.getRecord())
+
+#-----------------------------------------------------------------------------
+#  Equipment
+#-----------------------------------------------------------------------------
+  elif NoteNo == 7:
+    ref = ReferenceSymbol(font=8, number=1)
+    NoteData.append(ref.getRecord())
+    if ModelType == "equipment":
+      SplitModel = string.splitfields(Model, '#')
+      Proj = SplitModel[0]
+      Name = SplitModel[1]
+      txt = Proj + '-' + Name
+      NoteText = Text( text=txt, height = 2.0, v=0.5)
+      NoteData.append(NoteText.getRecord())
+
+#-----------------------------------------------------------------------------
+#  Plate Note
+#-----------------------------------------------------------------------------
+  elif NoteNo == 8:
+    ref = ReferenceSymbol(font=8, number=4)
+    NoteData.append(ref.getRecord())
+    if PartType == "plate":
+      inds = getCompInd( Model, "PLA", Part, "", 0)
+      est = "HULL.PANEL('" + Model + "').PLA(" + str(inds[0]) + ").THICKNESS"
+      thi = getRealValue(est)
+      txt = str(thi)
+      if txt[-2:] == ".0":
+        txt = txt[:-2]
+      thitext = Text( text=txt, v=0.5)
+      NoteData.append(thitext.getRecord())
+      est = "HULL.PANEL('" + Model + "').PLA(" + str(inds[0]) + ").QUALITY.STRING"
+      qual = " " + getStringValue(est)
+      qualtext = Text( text=qual, v=0.5)
+      NoteData.append(qualtext.getRecord())
+
+#-----------------------------------------------------------------------------
+#  Profile Note
+#-----------------------------------------------------------------------------
+  elif NoteNo == 9:
+    ref = ReferenceSymbol(font=8, number=1)
+    NoteData.append(ref.getRecord())
+    if PartType == "stiffener":
+      dum = createProfNote( Model, "STI", Part, "", 0)
+
+    elif PartType == "flange":
+      dum = createProfNote( Model, "FLA", Part, "", 0)
+
+    elif PartType == "bracket" and SubPartType == "stiffener":
+      dum = createProfNote( Model, "BRA", Part, "STI", SubPart)
+
+    elif PartType == "bracket" and SubPartType == "flange":
+      dum = createProfNote( Model, "BRA", Part, "FLA", SubPart)
+
+#-----------------------------------------------------------------------------
+#  Bracket Note
+#-----------------------------------------------------------------------------
+  elif NoteNo == 10:
+    ref = ReferenceSymbol(font=8, number=4)
+    NoteData.append(ref.getRecord())
+    if PartType == "bracket":
+      inds = getCompInd( Model, "BRA", Part, "", 0)
+      est = "HULL.PANEL('" + Model + "').BRA(" + str(inds[0]) + ").THICKNESS"
+      thi = getRealValue(est)
+      txt = str(thi)
+      if txt[-2:] == ".0":
+        txt = txt[:-2]
+      thitext = Text( text=txt, v=0.5)
+      NoteData.append(thitext.getRecord())
+      est = "HULL.PANEL('" + Model + "').BRA(" + str(inds[0]) + ").QUALITY.STRING"
+      qual = getStringValue(est)
+      txt = " " + qual
+      qualtext = Text( text=txt, v=0.5)
+      NoteData.append(qualtext.getRecord())
+
+#-----------------------------------------------------------------------------
+#  Bracket Profile Note
+#-----------------------------------------------------------------------------
+  elif NoteNo == 11:
+    ref = ReferenceSymbol(font=8, number=1)
+    NoteData.append(ref.getRecord())
+
+    if PartType == "bracket" and SubPartType == "stiffener":
+      dum = createProfNote( Model, "BRA", Part, "STI", SubPart)
+
+    elif PartType == "bracket" and SubPartType == "flange":
+      dum = createProfNote( Model, "BRA", Part, "FLA", SubPart)
+
+  return None
+
+#
+#-----------------------------------------------------------------------------
+#  Self test when run as top level script
+#-----------------------------------------------------------------------------
+#
+if __name__ == "__main__":
+  for no in range(len(NoteName)):
+    print getNoteName(no)
+    print getNoteChar(no)
+    for fi in range(len(NoteFilter[no])):
+      print getNoteFilter(no,fi)
+
+
+The imported module ConfNoteRec contains classes for the four record
+types as shown below.
+
+#-----------------------------------------------------------------------------
+#   Class ReferenceSymbol - defining a note reference symbol
+#-----------------------------------------------------------------------------
+class ReferenceSymbol:
+
+  def __init__(self, font=8, number=1, height=12.0):
+    self.font = int(font)
+    self.number = int(number)
+    self.height = float(height)
+
+  def getRecord(self):
+    return (1, self.font, self.number, 0, 0, 0.0, 0.0, 0.0, 0.0, self.height, "")
+
+#-----------------------------------------------------------------------------
+#   Class Symbol - defining a free note symbol
+#-----------------------------------------------------------------------------
+class Symbol:
+
+  def __init__(self, font=8, number=7, height=4.0, conn=0, u=0.0, v=0.0, rot=0.0, mirr=0):
+    self.font = int(font)
+    self.number = int(number)
+    self.height = float(height)
+    self.u = float(u)
+    self.v = float(v)
+    self.conn = int(conn)
+    self.rot = float(rot)
+    self.mirr = int(mirr)
+
+  def position(self, u, v):
+    self.u = float(u)
+    self.v = float(v)
+
+  def connection(self, conn):
+    self.conn = int(conn)
+
+  def mirror(self, mirr):
+    self.mirr = int(mirr)
+
+  def getRecord(self):
+    return (2, self.font, self.number, self.conn, self.mirr, self.u, self.v, self.rot, 0.0, self.height, "")
+
+#-----------------------------------------------------------------------------
+#   Class Text - defining a free note text
+#-----------------------------------------------------------------------------
+class Text:
+
+  def __init__(self, text=" ", height=3.5, font=0, u=0.0, v=0.0, slant=90.0, aspect=1.0):
+    self.text = str(text)
+    self.height = float(height)
+    self.font = int(font)
+    self.u = float(u)
+    self.v = float(v)
+    self.slant = float(slant)
+    self.aspect = float(aspect)
+
+  def position(self, u, v):
+    self.u = float(u)
+    self.v = float(v)
+
+  def getRecord(self):
+    return (11, self.font, 0, 0, 0, self.u, self.v, self.slant, self.aspect, self.height, self.text)
+
+#-----------------------------------------------------------------------------
+#   Class TextInSymbol - defining a note text placed by a symbol text position
+#-----------------------------------------------------------------------------
+class TextInSymbol:
+
+  def __init__(self, text=" ", height=3.5, textpos=1, font=0, slant=90.0, aspect=1.0):
+    self.text = str(text)
+    self.height = float(height)
+    self.conn = textpos
+    self.font = int(font)
+    self.slant = float(slant)
+    self.aspect = float(aspect)
+
+  def getRecord(self):
+    return (12, self.font, 0, self.conn, 0, 0.0, 0.0, self.slant, self.aspect, self.height, self.text)
+
+#
+#-----------------------------------------------------------------------------
+#  Self test
+#-----------------------------------------------------------------------------
+#
+if __name__ == "__main__":
+
+  print "testing ReferenceSymbol"
+  ref = ReferenceSymbol(8, 1, 3)
+  print ref.getRecord()
+
+  print "testing Symbol"
+  symb = Symbol(8, 7, 12)
+  symb.position(5.0, 0.5)
+  symb.connection(2)
+  symb.mirror(2)
+  print symb.getRecord()
+
+  print "testing Text"
+  text = Text("hello note", 5)
+  text.position(0, -6)
+  print text.getRecord()
+
+  print "testing TextInSymbol"
+  symbtext = TextInSymbol(text="hello symbol", textpos=2, font=3)
+  print symbtext.getRecord()
