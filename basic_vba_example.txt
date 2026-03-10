@@ -1,0 +1,81 @@
+‘
+‘ Declare a Data Extraction object
+‘
+Private dd1 As TBDex
+
+Private Sub CommandButton3_Click()
+
+  Dim val1, extr1 As Variant
+  Dim convStr1 As Variant
+  Dim dataExtractionStr As String
+  Dim i, j As Integer
+  Dim finished As Boolean
+
+  ‘
+  ‘ Create a new Data Extraction object
+  ‘
+  Set dd1 = New TBDex
+
+  ‘
+  ‘ Perform the data extraction
+  ‘
+  dd1.DoDataExtraction ("HULL.PAN('50A'*).PLATE(1:10).THICKNESS")
+
+  ‘
+  ‘ Get the first result structure
+  ‘
+  val1 = dd1.GetValue
+  extr1 = dd1.GetResTree
+
+  ‘
+  ‘ Check if there are more results
+  ‘
+  finished = False
+  If TypeName(val1) = "Boolean" Then
+    finished = True
+  End If
+
+  ‘
+  ‘ Loop through the remaining result structures
+  ‘
+  i = 1
+  While Not finished
+
+    ‘
+    ‘ Build the result string
+    ‘
+    j = 0
+    dataExtractionStr = ""
+    While extr1(j) <> ""
+      If j <> 0 Then
+        dataExtractionStr = dataExtractionStr + "."
+      End If
+      dataExtractionStr = dataExtractionStr + extr1(j)
+      If extr1(j + 1) <> "" Then
+        dataExtractionStr = dataExtractionStr + "."
+        dataExtractionStr = dataExtractionStr + "(" +extr1(j+1)+ ")"
+      End If
+      j = j + 2
+    Wend
+
+
+    Cells(i, 1) = dataExtractionStr
+    Cells(i, 2) = val1
+
+‘    convStr1 = dd1.ConvertToImperial(val1, 1, 2, 1, 1)
+‘    Cells(i, 3) = convStr1
+
+    Cells(i, 4) = TypeName(val1)
+
+    val1 = dd1.GetValue
+    extr1 = dd1.GetResTree
+    i = i + 1
+
+    If TypeName(val1) = "Boolean" Then
+      finished = True
+    End If
+  Wend
+done:
+  UserForm1.Hide
+  Set dd1 = Nothing
+End Sub

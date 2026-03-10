@@ -1,0 +1,120 @@
+MACRO, STIF;
+ASSIGN,EMPTY,'             ';
+ASSIGN,FILENAME,'STIF.LST';
+ASSIGN,TB,'TB172-';
+ASSIGN,STR,'HUL.PAN(TB*).STI(1:27).END(1:2).CUT.PAR'; EXTRACT,TREE,STR;
+ASSIGN,HEAD,' OBJECT                    STI  END    PARAMETERS';
+TABLE,TAB/ARGUMENTS=(HEAD)
+         /FILENAME=FILENAME
+         /FORMAT=(-60,)
+         /NOAPPEND;
+TABLE,TAB/ARGUMENTS=(EMPTY)
+         /FILENAME=FILENAME
+         /FORMAT=(-60,);
+GET/RANGE=(PANELS,STAT,TREE,);
+IF,STAT == 1;
+  LOOP,PANEL,PANELS;
+    GET/RANGE=(STIFFENERS,STAT,TREE,,PANEL);
+    IF,STAT == 1;
+      LOOP,STI,STIFFENERS;
+        GET/RANGE=(RNG,STAT,TREE,,PANEL,STI);
+        IF,STAT == 1;
+           LOOP,I,RNG;
+             GET/EXTRACT=(PARAM,STAT,TREE,,PANEL,STI,I,,);
+             IF,STAT == 1;
+                GET/STRUCTURE=(N,PARAM,-1);
+                LOOP,J,1:N::3;
+                   ASSIGN,K,J;
+                   GET/STRUCTURE=(P1,PARAM,K);
+                   ASSIGN,K,K+1;
+                   IF,K <= N;
+                      GET/STRUCTURE=(P2,PARAM,K);
+                      ASSIGN,K,K+1;
+                      IF,K <= N;
+                         GET/STRUCTURE=(P3,PARAM,K);
+                         TABLE,TAB/ARGUMENTS=(PANEL,STI,I,P1,P2,P3)
+                                  /FILENAME=FILENAME
+	/FORMAT=(-24,,5,0,5,0,10,2,10,2,10,2);
+                      ELSE;
+                         TABLE,TAB/ARGUMENTS=(PANEL,STI,I,P1,P2)
+                                  /FILENAME=FILENAME
+                                  /FORMAT=(-24,,5,0,5,0,10,2,10,2);
+                         TABLE,TAB/ARGUMENTS=(PANEL,STI,I,P1,P2)
+                                  /FILENAME=FILENAME
+                                  /FORMAT=(-24,,5,0,5,0,10,2,10,2);
+                      ENDIF;
+                   ELSE;
+                      TABLE,TAB/ARGUMENTS=(PANEL,STI,I,P1)
+                               /FILENAME=FILENAME
+                               /FORMAT=(-24,,5,0,5,0,10,2);
+                   ENDIF;
+                 ENDLOOP;
+               ENDIF;
+            ENDLOOP;
+         ENDIF;
+       ENDLOOP;
+     ENDIF;
+   ENDLOOP;
+ ENDIF;
+ TABLE,TAB/ARGUMENTS=(EMPTY)
+          /FILENAME=FILENAME
+          /FORMAT=(-60,);
+ PRESENT,TAB;
+ENDMACRO;
+OBJECT                    STI  END    PARAMETERS
+TB172-2SP                   1    1     15.00
+TB172-2SP                   1    2      0.00     92.00
+TB172-2SP                   2    1      0.00      0.00     90.81
+TB172-2SP                   2    2      0.00     92.01
+TB172-2SP                   3    1      0.00      0.00     90.81
+TB172-2SP                   3    2      0.00     92.01
+TB172-2SP                   4    1      0.00      0.00     90.82
+TB172-2SP                   4    2      0.00     92.00
+TB172-2SP                   5    1      0.00     90.60     90.84
+TB172-2SP                   5    2      0.00     91.98
+TB172-2SP                   6    1      0.00     91.16    100.35
+TB172-2SP                   6    2      0.00     91.61
+TB172-2SP                   7    1      0.00     92.14     99.49
+TB172-2SP                   7    2      0.00     91.89
+TB172-2SP                   8    1      0.00     92.93    103.16
+TB172-2SP                   8    2      0.00     91.77
+TB172-2SP                   9    1      0.00     93.85    107.04
+TB172-2SP                   9    2      0.00     91.73
+TB172-2SP                  10    1      0.00     94.69    110.28
+TB172-2SP                  10    2      0.00     91.59
+TB172-2SP                  11    1      0.00     95.70    112.87
+TB172-2SP                  11    2      0.00     91.58
+TB172-2SP                  12    1      0.00     97.54     89.90
+TB172-2SP                  12    2      0.00     92.03
+TB172-2SP                  13    1     15.00
+TB172-2SP                  15    1      0.00      0.00    125.03
+TB172-2SP                  15    1     54.97
+TB172-2SP                  15    2      0.00     92.00
+TB172-2SP                  16    1      0.00      0.00    125.03
+TB172-2SP                  16    1     54.97
+TB172-2SP                  16    2      0.00     92.00
+TB172-2SP                  17    1      0.00      0.00    125.03
+TB172-2SP                  17    1     54.97
+TB172-2SP                  17    2      0.00     92.00
+TB172-2SP                  18    1     15.00
+TB172-2SP                  18    2      0.00     92.00
+TB172-2SP                  19    1     15.00
+TB172-2SP                  19    2      0.00     92.00
+TB172-2SP                  20    1    106.09     87.70
+TB172-2SP                  20    2     93.74
+TB172-2SP                  21    1    106.35     87.98
+TB172-2SP                  21    2     92.72
+TB172-2SP                  22    1    106.41     88.18
+TB172-2SP                  22    2     92.18
+TB172-2SP                  23    1      0.00     83.43     70.57
+TB172-2SP                  23    1    109.43
+TB172-2SP                  23    2      0.00     92.00
+TB172-2SP                  24    1    106.47     88.39
+TB172-2SP                  24    2     91.67
+TB172-2SP                  25    1    106.41     88.76
+TB172-2SP                  25    2     91.00
+TB172-2SP                  26    1      0.00     85.68     76.67
+TB172-2SP                  26    1    103.33
+TB172-2SP                  26    2      0.00     92.00
+TB172-2SP                  27    1    106.33     88.95
+TB172-2SP                  27    2     90.72

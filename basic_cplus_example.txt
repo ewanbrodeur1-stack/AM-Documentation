@@ -1,0 +1,178 @@
+#include <stdio.h>
+
+//
+// Import the type library for the Data Extraction component
+//
+#import "c:\\tribon\\m2\\bin\\tbdexint.exe"
+using namespace TBDEXINTLib;
+
+#include <atlbase.h>
+#include <atlconv.h>
+#include <atlconv.cpp>
+
+
+int main()
+{
+   //
+   // Initialize COM
+   //
+   CoInitialize(NULL);
+
+   try
+   {
+      // this is needed by ATL conversion macros (e.g. OLE2T)
+      USES_CONVERSION;
+
+      //
+      // Create a data extraction object
+      //
+      ITBDexPtr pDex(__uuidof(TBDex));
+
+      //
+      // Perform the data extraction
+      //
+      LPCTSTR queryStr = "PIPE('DS4').PIPMODEL('P'*).NAME";
+      HRESULT hr = pDex->DoDataExtraction(_bstr_t(queryStr));
+
+      if (hr == S_FALSE)
+      {
+         printf("Data Extraction failed\n");
+         return -1;
+      }
+
+      //
+      // Loop through the result structures
+      //
+      int done=0;
+      while (!done)
+      {
+         //
+         // Get the next result value
+         //
+         _variant_t vVal = pDex->GetValue();
+
+         if (vVal.vt == VT_BOOL && vVal.boolVal == FALSE)
+         {
+            done = 1;
+            continue;
+         }
+
+//         vVal = pDex->ConvertToImperial(vVal, 1, 4, 1, 1);
+
+         char valueStr[1024];
+         //
+         // Check the value type and store it in valueStr
+         //
+         switch (vVal.vt)
+         {
+            case VT_I2:   // integer value
+               sprintf(valueStr, "%d", vVal.intVal);
+               break;
+
+            case VT_I4:   // integer value
+               sprintf(valueStr, "%d", vVal.lVal);
+               break;
+			
+            case VT_R8:   // real value
+               sprintf(valueStr, "%lf", vVal.dblVal);
+               break;
+            case VT_BSTR: // string value
+               sprintf(valueStr, "%s", OLE2T(vVal.bstrVal));
+               break;
+            case VT_R8 | VT_ARRAY: // array of reals
+            {
+               valueStr[0] = 0;
+
+               SAFEARRAY* valuePSA = vVal.parray;
+               if (!valuePSA)
+                  return -1;
+               double* doubleArray;
+               SafeArrayAccessData(valuePSA, (void**)&doubleArray);
+
+               for (UINT i=0; i<valuePSA->rgsabound->cElements; i++)
+               {
+                  double dbl = doubleArray[i];
+
+                  char str[128];
+                  sprintf(str, "%lf", dbl);
+
+                  if (!strlen(valueStr))
+                     strcat(valueStr, ", ");
+                  strcat(valueStr, str);
+               }
+               SafeArrayUnaccessData(valuePSA);
+               break;
+            }
+
+            case VT_BSTR | VT_ARRAY:  // array of strings
+            {
+               valueStr[0] = 0;
+
+               SAFEARRAY* valuePSA = vVal.parray;
+               if (!valuePSA)
+                  return -1;
+               BSTR* bstrArray;
+               SafeArrayAccessData(valuePSA, (void**)&bstrArray);
+
+               for (UINT i=0; i<valuePSA->rgsabound->cElements; i++)
+               {
+                  _bstr_t bStr = bstrArray[i];
+
+                  if (!strlen(valueStr))
+                     strcat(valueStr, ", ");
+                  strcat(valueStr, OLE2T(bStr));
+
+               }
+               SafeArrayUnaccessData(valuePSA);
+               break;
+            }
+
+            default:
+               strcpy(valueStr, "unknown result type");
+         }
+
+         //
+         // Get the result
+         //
+         _variant_t vResTree = pDex->GetResTree();
+         _bstr_t    bResStr;
+
+         //
+         // Build the result string
+         //
+         SAFEARRAY* resPSA = vResTree.parray;
+         if (!resPSA)
+            return -1;
+         BSTR* bResArray;
+         SafeArrayAccessData(resPSA, (void**)&bResArray);
+
+         for (UINT i=0; i<resPSA->rgsabound->cElements; i++)
+         {
+            _bstr_t bStr = bResArray[i];
+            if (bResStr.length() > 0 && bStr.length() > 0)
+               bResStr += _T(".");
+            bResStr += bStr;
+         }
+
+         //
+         // Display the result and value
+         //
+         printf("%-50s  =  ", (LPCTSTR)bResStr);
+         printf("%s\n", (LPCTSTR)valueStr);
+
+         SafeArrayUnaccessData(resPSA);
+      }
+
+   }
+   catch (const _com_error& Err)
+   {
+      _bstr_t bstrSource(Err.Source());
+      _bstr_t bstrDescription(Err.Description());
+      printf("%s\n", Err.ErrorMessage());
+      printf("\n\tSource :  %s \n\tdescription : %s \n ",
+             (LPCSTR)bstrSource,(LPCSTR)bstrDescription);
+   }
+
+   CoUninitialize();
+   return 0;
+}
