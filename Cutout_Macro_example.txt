@@ -1,0 +1,337 @@
+!*****************************************************************
+!
+!     NAME:
+!
+!         CUTOUT_1 - Calculate cutout contour. EXAMPLE
+!
+!
+!     PURPOSE:
+!
+!         The Macro calculates the cutout contour for cutout
+!         type xxx and profile type yyy.
+!
+!     DECLARATION:
+!
+!         MACRO, CUTOUT_1, NO_PROF_PARAMS,
+!                              PROF_TYPE,
+!                              PROF_PARAM1,
+!                              PROF_PARAM2,
+!                              PROF_PARAM3,
+!                              PROF_PARAM4,
+!                              PROF_PARAM5,
+!                              PROF_PARAM6,
+!                              V2,
+!                              V3,
+!                              WEB_FACTOR,
+!                              FLANGE_FACTOR,
+!                              PLATE_THICKNESS,
+!                              R1,
+!                              R2,
+!                              M1,
+!                              M2,
+!                              M3,
+!                              M4,
+!                              CUTOUT_CONTOUR,
+!                              WELD_INFO;
+!
+!     INPUT:
+!
+!         Parameters:
+!
+!         NO_PROF_PARAMS 	Number of valid profile parameters
+!
+!         PROF_TYPE 	Profile Type
+!
+!         PROF_PARAM1	The meaning of the profile parameters are
+!         dependent on the profile type.
+!         PROF_PARAM2
+!
+!         PROF_PARAM3
+!
+!         PROF_PARAM4
+!
+!         PROF_PARAM5
+!
+!         PROF_PARAM6
+!
+!         V2 	2D Vector along the flange.
+!
+!         V3 	2D Vector along the contour.
+!
+!         WEB_FACTOR 	Prolonging factor along V1
+!
+!         FLANGE_FACTOR 	Prolonging factor along V2
+!
+!         PLATE_THICKNESS 	Plate thickness
+!
+!         R1 	Customer controlled variable.
+!
+!         R2 	Customer controlled variable.
+!
+!         M1 	Customer controlled variable.
+!
+!         M2 	Customer controlled variable.
+!
+!         M3 	Customer controlled variable.
+!
+!         M4 	Customer controlled variable.
+!
+!     RESULT:
+!
+!         Parameters:
+!
+!         CUTOUT_CONTOUR 	The contour defining the cutout.
+!
+!         WELD_INFO 	String to contain a comma separated list of           numbers
+!	identifying which line segments are to be welded.
+!
+! 	Observe that only line segments should be counted.
+!
+!*****************************************************************
+MACRO, 'cutout_1', NO_PROF_PARAMS,
+                   PROF_TYPE,
+                   PROF_PARAM1,
+                   PROF_PARAM2,
+                   PROF_PARAM3,
+                   PROF_PARAM4,
+                   PROF_PARAM5,
+                   PROF_PARAM6,
+                   V2,
+                   V3,
+                   WEB_FACTOR,
+                   FLANGE_FACTOR,
+                   PLATE_THICKNESS,
+                   R1,
+                   R2,
+                   M1,
+                   M2,
+                   M3,
+                   M4,
+                   CUTOUT_CONTOUR,
+                   WELD_INFO;
+DECLARE, NO_PROF_PARAMS, INTEGER;
+DECLARE, PROF_TYPE, INTEGER;
+DECLARE, PROF_PARAM1, DECIMAL;
+DECLARE, PROF_PARAM2, DECIMAL;
+DECLARE, PROF_PARAM3, DECIMAL;
+DECLARE, PROF_PARAM4, DECIMAL;
+DECLARE, PROF_PARAM5, DECIMAL;
+DECLARE, PROF_PARAM6, DECIMAL;
+DECLARE, V2, VECTOR_2D;
+DECLARE, V3, VECTOR_2D;
+DECLARE, WEB_FACTOR, DECIMAL;
+DECLARE, FLANGE_FACTOR, DECIMAL;
+DECLARE, PLATE_THICKNESS, DECIMAL;
+DECLARE, R1, DECIMAL;
+DECLARE, R2, DECIMAL;
+DECLARE, M1, DECIMAL;
+DECLARE, M2, DECIMAL;
+DECLARE, M3, DECIMAL;
+DECLARE, M4, DECIMAL;
+DECLARE, CUTOUT_CONTOUR, CONTOUR_2D;
+DECLARE, WELD_INFO, STRING;
+!
+!         Local declarations
+!
+!
+!
+!       P1, P2 define two node points of the profile.
+!
+DECLARE, P1_X, DECIMAL;
+DECLARE, P1_Y, DECIMAL;
+DECLARE, P2_X, DECIMAL;
+DECLARE, P2_Y, DECIMAL;
+!
+!       C0 - C10 define the node points of the cutout contour.
+!
+DECLARE, C0, POINT_2D;
+DECLARE, C1, POINT_2D;
+DECLARE, C2, POINT_2D;
+DECLARE, C23, POINT_2D;
+DECLARE, C3, POINT_2D;
+DECLARE, C4, POINT_2D;
+DECLARE, C45, POINT_2D;
+DECLARE, C5, POINT_2D;
+DECLARE, C6, POINT_2D;
+!
+!       V1  is the normalized 2d vector along the web
+!       V1T is the normalized 2d vector which is orthogonal to V1
+!       V2  is the normalized 2d vector along the flange
+!       V2T is the normalized 2d vector which is orthogonal to V2
+!       V3  is the normalized 2d vector along the contour
+!       V3T is the normalized 2d vector which is orthogonal to V3
+!
+DECLARE, V1, VECTOR_2D;
+DECLARE, V1_NEG, VECTOR_2D;
+DECLARE, V1_X, DECIMAL;
+DECLARE, V1_Y, DECIMAL;
+DECLARE, V1T, VECTOR_2D;
+DECLARE, V1T_X, DECIMAL;
+DECLARE, V1T_Y, DECIMAL;
+DECLARE, V2_X, DECIMAL;
+DECLARE, V2_Y, DECIMAL;
+DECLARE, V2T, VECTOR_2D;
+DECLARE, V2T_X, DECIMAL;
+DECLARE, V2T_Y, DECIMAL;
+DECLARE, V3_X, DECIMAL;
+DECLARE, V3_Y, DECIMAL;
+!
+!       Some additional help variables
+!
+DECLARE, DIST1, DECIMAL;
+DECLARE, DIST2, DECIMAL;
+DECLARE, DIST3, DECIMAL;
+DECLARE, FIXED_R1, DECIMAL;
+DECLARE, FIXED_R2, DECIMAL;
+DECLARE, Q0, POINT_2D;
+DECLARE, Q1, POINT_2D;
+DECLARE, RES, INTEGER;
+DECLARE, SNIP, DECIMAL;
+DECLARE, X, DECIMAL;
+DECLARE, Y, DECIMAL;
+!*******************************************************************
+!
+!       Main procedure of CUTOUT_1
+!
+!*******************************************************************
+!
+!
+!       V1 is always along the y - axis in this coordinate system.
+!
+ASSIGN, V1_X, 0.0;
+ASSIGN, V1_Y, 1.0;
+VECTOR_2D, V1, V1_X, V1_Y;
+ASSIGN, V1T_X, -1.0;
+ASSIGN, V1T_Y, 0.0;
+VECTOR_2D, V1T, V1T_X, V1T_Y;
+GET/STRUCTURE = (V2_X, V2, 'VEC', 'X');
+GET/STRUCTURE = (V2_Y, V2, 'VEC', 'Y');
+ASSIGN, V2T_X, -1.0 * V2_Y;
+ASSIGN, V2T_Y, V2_X;
+VECTOR_2D, V2T, V2T_X, V2T_Y;
+GET/STRUCTURE = (V3_X, V3, 'VEC', 'X');
+GET/STRUCTURE = (V3_Y, V3, 'VEC', 'Y');
+!
+!       Two radii are fixed in this cutout (r = 25, r = 45)
+!
+ASSIGN, FIXED_R1, 25.0;
+ASSIGN, FIXED_R2, 45.0;
+!
+!       Two distances are fixed in this cutout (d = 1.7, d = 65)
+!
+ASSIGN, DIST1, 1.5;
+ASSIGN, DIST2, 60.0;
+ASSIGN, DIST3, SQRT(FIXED_R1*FIXED_R1 - DIST1*DIST1);
+!
+!       For profile type 30 PROF_PARAM4 = PROF_PARAM3
+!
+IF, PROF_TYPE == 30;
+   ASSIGN, PROF_PARAM4, PROF_PARAM3;
+ENDIF;
+!
+!       The cutout contour starts with a 10 x 10 snip.
+!
+   ASSIGN, SNIP, 10.0;
+!
+!       Treat the nominal case separately to gain efficiency.
+!
+!       Start with the code for the general case.
+!
+ASSIGN, X, V1_X * V2_X + V1_Y * V2_Y;
+IF, ABS(X) > 0.0025;
+!
+!       Calculate two node points of the profile.
+!       P0 is always in (0, 0)
+!
+   ASSIGN, P1_X, 0.0;
+   ASSIGN, P1_Y, PROF_PARAM1 * WEB_FACTOR;
+   ASSIGN, P2_X, P1_X + V2_X * PROF_PARAM2 * FLANGE_FACTOR;
+   ASSIGN, P2_Y, P1_Y + V2_Y * PROF_PARAM2 * FLANGE_FACTOR;
+!
+!
+!       Define cutout contour node points.
+!
+!
+!
+!       The first two points are given by the 10 x 10 snip and a line         segment along the web with
+!       an offset of DIST1 * V1T from the web.
+!
+   POINT_2D, C0, -DIST1 -100.0*V3_X, -DIST1*(V3_Y%V3_X) + SNIP -100.0*(1.0+V3_Y);
+   POINT_2D, C1, -DIST1, -DIST1 * (V3_Y % V3_X) + SNIP;
+!
+!       C2 is given by the first intersection between the previous         line segment and a circle with
+!       R = 20 centred at p1.
+!
+   POINT_2D, C2, P1_X - V1_X * DIST3 + V1T_X * DIST1,
+                 P1_Y - V1_Y * DIST3 + V1T_Y * DIST1;
+!
+!       C23 defines a point on the circle segment (R = 20, centre         point = p1)
+!
+   POINT_2D, C23, P1_X + V1T_X * FIXED_R1, P1_Y + V1T_Y * FIXED_R1;
+!
+!       C3 is given by the intersection between the previous circle         and a line segment along the
+!       flange with an of offset DIST1 * V2T from the flange.
+!
+   POINT_2D, C3, P1_X + V2_X * DIST3 + V2T_X * DIST1,
+                 P1_Y + V2_Y * DIST3 + V2T_Y * DIST1;
+!
+!       C6 defines the end of a line segment parallel to the web and         located DIST2 from the right
+!       end of the flange.
+!
+!       Extend the line well beyond y = 0.0 to ensure intersection         with the contour on which the
+!       profile is standing.
+!
+   POINT_2D, C6, P2_X + DIST2, -100.0;
+!
+!       C4, C5 define starting and ending points of a fillet radius         between the line segment along
+!       the flange starting in C3 and the line segment along the web         ending in C6.
+!
+   VECTOR_2D, V1_NEG, 0.0, -1.0;
+   CALL, 'fillet_radius_2d', C3, V2, C6, V1_NEG, FIXED_R2, C4, C5, RES;
+ELSE;
+!
+!       This is the nominal case i.e. the angle between
+!       web and flange is 90 degrees +- 0.15
+!
+!       Since this is simply a special case of the general one
+!       this is not commented in detail.
+!
+   ASSIGN, X, FLANGE_FACTOR * PROF_PARAM2;
+   ASSIGN, Y, WEB_FACTOR * PROF_PARAM1;
+   POINT_2D, C0, -DIST1 -100.0*V3_X, -DIST1*(V3_Y%V3_X) + SNIP -100.0*(1.0+V3_Y);
+   POINT_2D, C1, -DIST1, -DIST1 * (V3_Y % V3_X) + SNIP;
+   POINT_2D, C2, -DIST1, Y - DIST3;
+   POINT_2D, C23, -FIXED_R1, Y;
+   POINT_2D, C3, DIST3, Y + DIST1;
+   POINT_2D, C4, X + DIST2 - FIXED_R2, Y + DIST1;
+   POINT_2D, C5, X + DIST2, Y + DIST1 - FIXED_R2;
+   POINT_2D, C6, X + DIST2, -100.0;
+ENDIF;
+!
+!       Define the cutout contour.
+!       the direction of the cutout contour should be following
+!       the profile from p0 to p1 to ...
+!
+CONTOUR, CUTOUT_CONTOUR, C0
+                        /LINEEND = C1
+                        /LINEEND = C2
+                        /ARCMIDPNT = (C23, C3)
+                        /LINEEND = C4
+                        /ARCRADIUS = (C5, -FIXED_R2)
+                        /LINEEND = C6;
+!
+!       Set the weld info.
+!       This is simply a string containing a comma separated
+!       list of the line segments that should be welded.
+!       In this cutout contour:
+!
+!       C0 - C1         defines line segment 1
+!       C1 - C2         defines line segment 2
+!       C3 - C4         defines line segment 3
+!       C5 - C6         defines line segment 4
+!
+!       Observe that only line segments can be specified
+!       and that only line segments should be counted.
+!
+ASSIGN, WELD_INFO, '2,3';
+ENDMACRO;
