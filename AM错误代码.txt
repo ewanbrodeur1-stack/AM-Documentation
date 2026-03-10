@@ -1,0 +1,1301 @@
+0004 No segments of sufficient size available
+0005 Size value in segments out of bounds
+-000 Work area missing.
+-001 Too small memory. Work area impossible to establish.
+-002 Too small work area. Impossible to continue.
+-003 SSP system error in the work area.
+-004 SSP system error. Given parameter is too large.
+-005 SSP system error. Given parameter is too small.
+-006 SSP system error. The CO or the CTO is incorrect at the call.
+-007 System error, not to be referred to as SSP system error.
+0101 Error in object structure, erroneous ELH
+0102 Error in object structure, unexpected end of list
+0103 Error in object structure, missing element
+0104 Error in object structure, unexpected empty list
+0105 Error in object structure, attempt to double object head
+0106 Attempt to delete valid ELH:s
+0107 Delivering and receiving lists overlap
+0108 OL-field too small
+0109 Invalid element pointer
+0110 Attempt to allocate element with illegal size
+0111 Attempt to store element with size <= 0
+0112 Too many objects in workspace
+0201 Upper bound of procedure call stack exceeded
+0202 Upper bound of error stack exceeded
+0203 Lower bound of procedure call stack exceeded.
+0251 Error in parameter No. 1
+0252 Error in parameter No. 2
+0253 Error in parameter No. 3
+0254 Error in parameter No. 4
+0255 Error in parameter No. 5
+0256 Error in parameter No. 6
+0257 Error in parameter No. 7
+0258 Error in parameter No. 8
+0259 Error in parameter No. 9
+0260 Error in parameter No. 10
+0261 Error in parameter No. 11
+0262 Error in parameter No. 12
+0263 Error in parameter No. 13
+0264 Error in parameter No. 14
+0265 Error in parameter No. 15
+0266 Error in parameter No. 16
+0267 Error in parameter No. 17
+0268 Error in parameter No. 18
+0269 Error in parameter No. 19
+0270 Error in parameter No. 20
+0271 QXD04 is empty
+0272 Illegal geometry type in QXD04
+0273 Number of geometry elements does not match QXD04
+0274 Error in form system
+0299 General module interface inconsistence
+0301 Overflow in object
+0302 New object name already in use
+0303 Object does not exist
+0304 Invalid object pointer
+0305 Open failure on input file
+0306 Invalid format on input file
+0307 Invalid object name (too long)
+0308 Write failure on file
+0319 Application not allowed to read the object
+0320 Can not allocate object transfer buffer
+0321 Invalid logical data bank unit
+0322 Logical data bank unit already in use
+0323 Data bank table full
+0324 Lock entry found instead of object
+0325 Logical data bank unit not connected
+0326 Object already exists in working area
+0327 Object not found in the data bank
+0328 Object not locked
+0329 Data file has invalid format
+0330 Object currently locked by another user
+0331 Too many objects are already locked
+0332 Object has invalid format
+0333 Object already exists in data bank
+0334 No room in data bank
+0335 Unsupported object structure
+0336 Virtual data bank already connected
+0337 Virtual data bank not connected
+0338 Databank may not be of type "sequential db directory"
+0339 Attempt to store a non-picture object in a sequential db directory
+0340 Open failure of directory file
+0341 Close failure of directory file
+0342 Record not found in the directory file
+0343 Record locked
+0344 Fatal error in directory file
+0345 Error creating directory file
+0346 Record already exists in directory file
+0347 No room on output device when updating directory file
+0348 Data bank currently locked by another user.
+0349 Attempt to lock an object in a sequential db directory
+0350 Open failure of data file
+0351 Close failure of data file
+0352 Record not found in the data file
+0353 Record locked
+0354 Fatal error in data file
+0355 Error creating data file
+0356 No room on output device when updating data file
+0357 Two revisions of the same object not allowed in workspace
+0358 Allocation map has invalid format
+0360 Open failure of sequential data bank
+0361 Close failure of sequential data bank
+0362 End of file of sequential data bank
+0364 Fatal error in sequential data bank
+0365 Error creating sequential data bank
+0366 No room on output device when updating sequential data bank
+0367 Error in object code
+0368 Restored object size does not match the stored size.
+0369 Attribute type not recognized
+0370 Access to object not allowed
+0371 M2 can not read objects of version 4
+0372 Project not enabled to store objects of version 4
+0373 Project not enabled to store picture objects of version 8
+0380 Error creating exposed elements
+0381 Error synchronising object
+0382 Prewrite object operation failed
+0383 Postwrite object operation failed
+0384 Move: Could not name new exposed element
+0385 Move: Could not get all dependants
+0386 Move: Could not create new exposed owner element
+0387 Move: Could not name new owner element
+0388 Move: Could not update all references
+0389 Database error
+0401 Too big contour, element maximum size exceeded
+0402 Error in record (card) decoding
+0403 Unknown record (card) type
+0404 Wrong order of picture elements
+0405 Unexpected end of file
+0406 Erroneous input term, should be record type
+0407 Unexpected new object, old one not completed
+0408 Unexpected geometry element
+0409 Erroneous term - violates input syntax
+0410 Unexpected component element
+0411 Unexpected subcomponent element
+0412 Syntax error in input
+0413 Data missing in input for component
+0414 Data missing in input for subcomponent
+0415 Data missing in input for text element
+0416 Unexpected subpicture element
+0417 Data missing in input for subpictures
+0418 Set of rules is not initiated
+0419 Number for placing rules is not found for specific parameter
+0501 Empty component
+0502 Wrong level for subcomponent
+0503 Empty subcomponent
+0504 Unknown data type for geometry element
+0505 Wrong level for geometry
+0506 Empty picture object
+0507 Unallowed scale factor
+0508 The element is not a subpicture
+0509 Unallowed level
+0510 Unallowed number of subpicture levels
+0511 Unallowed start level for identification
+0512 Unallowed end level for identification
+0513 Subordinate element missing
+0514 Empty picture
+0515 Transformation information missing
+0516 The element is not a subcomponent
+0517 Illegal font number
+0518 Symbol font file does not exist
+0524 Indicated segment does not exist
+0525 Points on the contour not given in the direction of the contour
+0526 Indicate element does not exist
+0527 Wrong type of element given
+0529 Object not initialized
+0530 Subordinate level not open
+0531 Element on superior level not open
+0532 Symbol does not exist
+0533 Size of element too big
+0534 Mismatch between the opened subcomponent and the given element
+0535 Text font file does not exist or out of range (8-99)
+0536 Error in text font file (8-99)
+0537 Error when loading text font file (8-99)
+0538 Vector font file does not exist or out of range (1-99)
+0539 Vector font does not exist
+0540 Vector font does exist but language not assigned
+0541 Internal symbol font error
+0701 Erroneous object head (ELH-error)
+0702 Empty picture object
+0703 Attempt to identify an element not being a component
+0801 Error in activity code
+0802 First file does not exist
+0803 First message array too small
+0804 First index array too small
+0805 Second file does not exist
+0806 Second message array too small
+0807 Second index array too small
+0808 Message file not available
+0809 Impossible to open plotter file
+0810 Read error on first message file
+0811 Read error on second message file
+0812 Denoted message does not exist
+0901 Communication breakdown
+1001 CAT-object does not exist
+1002 Contour does not exist
+1003 Table row does not exist
+1004 Member does not exist
+1005 Segment part does not exist
+1006 Error in contour representation
+1007 Error in activity code specifying the contour to be treated
+1008 Error in activity code specifying the part of the contour to be treated
+1009 Error in activity code specifying the part of the table to be treated
+-100 Incorrect total name.
+1010 Error in activity code specifying the part of the table row to be treated
+1011 Error in activity code specifying the table member to be treated
+1012 Error in activity code specifying the part of the table member to be treated
+1013 Invalid segment number
+1014 Error in activity code specifying the part of the segment to be treated
+1015 Error in specifying the attribute to be treated
+1016 Error in location parameter defining the kind of attribute to be treated
+1017 Error in location parameter defining the position of the wanted element
+1018 Invalid current CAT-object number
+1019 Pointer in QCATPT of QWC030 to owner element not valid
+-101 Total name too long.
+1020 The object is not a CAT-object
+1021 Error in attribute size
+1022 Erroneous segment type
+1023 Dimensions not equal in receiving and delivering contours
+1024 Error in activity code specifying the part of a segment to be saved
+1025 Error in activity code specifying the part of a contour to be saved
+1026 Given point is outside contour
+1027 Error in representation (must be 2 or 3)
+1028 Given representation does not correspond to the original representation in the transformation matrix
+1029 Given data not sufficient to define the new coordinate system
+-102 Type too long.
+1030 Error in activity code specifying how to create a transformation matrix
+1031 Error in parameter defining the coordinate axis
+1032 Error in parameter defining the coordinate plane
+1033 Transformation matrix is not invertible
+1034 Error in activity code defining point or vector
+1035 Error in activity code specifying storing of attribute data (common area of array)
+1036 Segment given from input is a zero segment
+1037 Beta given from input does not belong to (0,1)
+1038 Tangent vector undefined
+1039 Equation root < 0
+-103 Attribute name too long.
+1040 Vector along line is the zero vector
+1041 Vector perpendicular to plane is the zero vector
+1042 The contour is not closed
+1043 Transformation not possible because the transformation matrix includes a projection
+1044 Points not given in the direction of the contour
+1045 Error in activity code controlling tangent calculations
+1046 Error in tangent code
+1047 Too many point attributes
+1048 Given activity code does not allow equal contours
+1049 The contour does not contain any segments
+-104 Incorrect pointer.
+1050 The contour is closed
+1051 Impossible to insert contour
+1052 Error in activity code (PTYPE) specifying the type of projection
+1053 The centre of projection lies in the projection plane (central projection)
+1054 The projecting lines are parallel to the projection plane (parallel projection)
+1055 Input object and resulting object must not be equal
+1056 Error in contour code 1
+1057 Error in object code 2
+1058 2-attribute at contour level not found
+1059 2-attribute at object level not found
+-105 The first of the given objects in the parameter list is missing.
+1060 Space curve improperly stored
+1061 Wrong geometry type for R2-contour
+1062 Impossible tangent vectors
+1063 Intersection point missing
+1064 Too many intersection points
+1065 Impossible to create fillet
+1066 Argument array too small
+1067 Array too small
+1068 Unallowed value of skewness factor
+1069 Undefined tangent vector
+-106 The second of the given objects in the parameter list is missing.
+1070 Bad combination of data for a BC-segment (surface problem)
+1071 Coordinate outside given limits
+1072 Impossible to create curve
+1073 Intersection curve missing
+1074 Given length longer than contour length
+1075 Upper bound of attribute data structure exceeded
+-107 Object missing.
+-108 The given object is not a geometry object.
+-109 The given object is not a table object.
+-110 The given objects are of different kinds.
+-111 Empty object at the call.
+-112 Contour 0 empty at the call.
+-113 The given contour number too large.
+-114 The given contour 0 at the call closed.
+-115 The last segment of the CO-0 at the call is not a line segment.
+-116 The last segment of the CO-0 at the call is parallel to the given line.
+-117 The end point of the CO-0 at the call lies inside the given circle.
+-118 The given segment does not exist.
+-119 Incorrect orientation of the given segments.
+-120 The given length is too large.
+-121 The given point does not lie on the given segment.
+-122 Incorrect end point selection (f = 0 and f = 1).
+-123 One or several breakpoints outside KRANGE.
+-124 Amplitude outside KRANGE.
+-125 The given amplitude is larger than half the distance between the end points of the segment.
+-126 Central angle greater than 360.
+-127 Number of distinct points less than 2.
+-128 Intersection point number not equal to  + 1 or + 2.
+-129 The length of the interval is zero.
+-130 Integer parameter outside the range.
+-131 Incorrect location code.
+-132 Too large attribute.
+-133 Attribute of wrong format.
+-134 Incorrect code number for part selection of contour.
+-135 Point on contour with given coordinate missing.
+-136 Incorrect boundary conditions.
+-137 Incorrect intersection point designation.
+-138 Incorrect storing of points in the CTO.
+-139 Incorrect parameter data type.
+-140 Table row missing.
+-141 Improper storing of table.
+-142 The given radius is too large.
+-143 The second of the given objects in the parameter list existed at the call.
+-144 Incorrect password.
+-145 Incorrect number of parameters.
+-146 Unallowed value of input parameters.
+-147 Attribute number out of range.
+-148 Table member missing.
+-149 Input string is empty.
+-150 Unallowed inclination angle.
+-151 RSO type does not allow location of panel.
+2001 Unallowed record number in text input
+2002 Wrong order among records in text input
+2004 No object is current
+2005 Current subpicture not panel
+2006 Information about current measurement element missing
+2007 Erroneous table structure
+-200 Attribute type out of bounds.
+-201 Attribute head without attribute.
+-202 Type out of bounds.
+-203 I/O buffer too small.
+-204 Row head without elements.
+-205 Incomplete type 5 attribute.
+-206 Impossible to unpack I/O buffer.
+22000 Name of current deck is missing in modal storage.
+22001 Projection attribute is missing in picture object.
+22002 Transformation attribute is missing in picture object.
+22003 Erroneous item attribute.
+22004 Name of deck is missing in picture object.
+22005 Name of room is missing in picture object.
+22006 No current room.
+22007 Hole id out of range.
+22008 Erroneous start element.
+22009 Invalid identification number.
+22010 Invalid data type.
+22011 Error in conversion of a point from 2D to 3D.
+22012 Projection is not axis-parallel.
+22013 Error transforming an arrangement.
+22014 Copy an item failed.
+22015 Unknown item type to recreate.
+22016 Failed to identify a room.
+22017 Erroneous type of item.
+22018 Erroneous height axis.
+22019 Pointer to the deck not found.
+22020 Erroneous number of intersections.
+22021 Copy geometry element failed.
+22100 Erroneous type of item.
+22300 Name of deck is missing in model object.
+22301 Erroneous directrix.
+22600 Error in form handling.
+22601 Prohibited component type.
+22602 Prohibited table.
+22603 Erroneous table dimension.
+22604 Prohibited table item.
+22605 Incorrect data type of table value.
+22606 Erroneous type of information.
+22607 Erroneous description object.
+22608 Error occurred in the LIB$SET_LOGICAL function.
+23000 Invalid identification number.
+23001 Error in form handling.
+23002 Undefined symbolic name for test sequence directory.
+23003 File specification syntax error.
+2501 Impossible to create default file.
+2502 Mismatch between 01 and 04 objects in parts generation
+2503 Incorrect type of CAT-object
+2504 Incorrect type of picture object
+2505 Incorrect combination of objects
+2506 Incorrect storing of 02-object
+2507 Attribute describing detail missing or incorrect in 02-object
+2508 Incorrect type of subpicture in 03-element (ID missing)
+2509 Attribute 101 missing or incorrect in 01-object
+2510 Attribute 101 missing or incorrect in 02-object
+2511 Attribute containing transformation matrix missing or incorrect in 02-object
+2512 Undefined CAT-object
+2513 Undefined picture object
+2514 Illegal format on data file containing part names
+2515 Parent plate missing in 03-object
+2516 Subcomponent corresponding to attribute missing
+2517 Contour attribute 101 missing
+2518 Standard hook file has illegal format or does not exist
+2519 Component corresponding to attribute is missing
+2520 Start order attributes do not correspond to the start attributes
+2521 Auxiliary function attribute found on segment level is missing on object level
+2522 Gap attribute found on segment level is missing on object level
+2523 Internal attribute arrays exceeded
+2524 Inconsistency in plate structure
+2525 Attribute not found
+2526 Incorrect attribute
+2527 Plate part contour missing or erroneous
+2528 Verified path outside raw plate
+2529 Impossible to create chamfer file
+2530 Impossible to evaluate CVBA angle
+3001 SLABEL too big. Impossible to put in index tables
+3002 Information about SLABEL does not exist
+3003 Invalid index to IDENT-table
+3004 ID is not found in IDENT-table
+3005 ID-table is full
+3006 Information about SLABEL exists, must be deleted before "put".
+3007 No current scheme
+3008 Editor not in system
+3009 Any of the index table attributes missing
+-300 One or more breakpoints outside KRANGE.
+3010 Scheme name in attribute 199 "not =" current scheme name.
+3011 No picture object found
+3012 Error opening scheme file for writing
+3013 Error writing scheme file line
+3014 Error converting scheme for writing
+3015 Panel already occupied by scheme generation
+-301 Amplitude outside KRANGE.
+-302 The amplitude is larger than half the distance between the starting point and the end point  of the segment.
+-303 Intersection point missing.
+-304 Intersection point before the given point missing.
+-305 Intersection point after the given point  missing.
+-306 The last line segment of the CO-0 at the call is not touched by the bending circle.
+-307 The given point lies on the contour 0 of the given description.
+-308 Incorrect boundary conditions.
+-309 Part of CAT object missing.
+3100 Failed to verify the shell curve object.
+3101 Failed to verify the seam object.
+3102 	 	3102
+3103 The curve is outside the default box.
+3104 Failed to verify the point object.
+3105 Failed to verify the plane object.
+3106 Failed to verify the cylinder object.
+3107 Corrupt point object, the root attribute does not exist.
+3108 Corrupt seam object, the root attribute does not exist.
+3109 Corrupt curve object, the root attribute does not exist.
+-310 Data file not open for reading.
+3110 Corrupt cylinder object, the root attribute does not exist.
+3111 Corrupt plane object, the root attribute does not exist.
+3112 Corrupt object, a point attribute is missing.
+3113 Corrupt object, a plane attribute is missing.
+3114 Corrupt object, a curve attribute is missing.
+3115 Corrupt object, a cylinder attribute is missing.
+3116 Corrupt object, a surface attribute is missing.
+3117 A referenced surface object was not found.
+3118 A referenced curve object was not found.
+3119 A referenced point object was not found.
+-311 Data file not open for writing.
+3120 A referenced plane object was not found.
+3121 A referenced cylinder object was not found.
+3122 Corrupt object, invalid definition data.
+3123 Failed to intersect the surface with the plane.
+3124 Failed to intersect the shell curve with the plane.
+3125 Failed to convert a Lines Fairing curve to a space curve.
+3126 Failed to expand the point object.
+3127 Failed to expand the plane object.
+3128 Failed to expand the curve object.
+3129 Failed to intersect the two curves.
+-312 Data file already open for sequential processing.
+3130 Could not define a parameter axis for proper space curve.
+3131 Failed to trim the curve with the default box.
+3132 Corrupt object, invalid or missing root attribute.
+3133 Failed to reduce object.
+3134 Conversion failed: Could not find a parameter axis.
+3135 Failed to verify the shell profile object.
+3136 Failed to verify the shell stiffener object.
+3137 A referenced shell stiffener object was not found.
+3138 Maximum number of points exceeded.
+3139 Failed to verify the feature.
+-313 Demanded unit missing.
+3140 Failed to verify the hull curve object.
+3141 Limit table object missing or incorrect.
+3142 Mismatch in limit table.
+3143 A referenced panel was not found.
+3144 A referenced shell profile was not found.
+3145 A referenced seam was not found.
+3146 The shell stiffener overlaps another stiffener in the shell profile.
+3147 The point cannot be moved outside the curve.
+3148 Failed to intersect the shell curves.
+3149 Seam curve must not consist of more than one branch.
+3150 Failed to verify the shell plate object.
+-314 Intersection point missing when n = 0.
+-315 Impossible to write (e.g. secondary areas  filled).
+-316 Data file already closed.
+-317 Spline calculations interrupted. Check input points.
+-318 Plane curve not single-valued with respect to the given coordinate.
+-319 Record locked.
+4001 PCDB - No component slot available
+4002 PCDB - Component not found in the data bank
+4003 PCDB - Component currently locked by another user
+4004 PCDB - Component already exists on the data bank
+4005 PCDB - Component has invalid format
+4006 PCDB - Invalid current component number
+4007 PCDB - Component not current under given current component number
+4008 PCDB - Invalid activity code
+4009 PCDB - Object found instead of a component
+4201 PCDB - Search object already exists
+4202 PCDB - Search data not defined
+4203 PCDB - Search data not defined at connection one
+4301 PSDB - Failure creating lock entry
+4302 PSDB - Named element already exists
+4303 PSDB - Superior environment is not active
+4304 PSDB - Already active in QWQ12
+4305 PSDB - Invalid data type
+4306 PSDB - One or two project object missing
+4307 PSDB - Invalid status encountered in QWQ12
+4308 PSDB - Object not locked when attempting to delete or update
+4309 PSDB - Attribute not found
+4310 PSDB - Part not found
+4311 PSDB - External part cannot be updated
+4312 PSDB - Name missing in name table
+4313 PSDB - Impossible part
+4314 PSDB - Erroneous data in attribute
+4315 PSDB - Keyword not found in syntax definition
+4316 PSDB - Arguments do not match the application (is syntax definition recently changed?)
+4317 PSDB - Error in deleting connection attribute
+4318 PSDB - Error during deletion of a part
+4319 PSDB - Error when restoring part
+4320 PSDB - Failure deleting subview (interactive modelling)
+4321 PSDB - Transformation data for view missing (interactive modelling)
+4322 PSDB - Failure copying subview (interactive modelling)
+4323 PSDB - Name attribute missing (interactive modelling)
+4324 PSDB - Interactive component choice menu not initiated
+4325 PSDB - Error in logical references
+4326 PSDB - Branch element not found
+4327 PSDB - Error in object pointer of part
+4328 PSDB - Error when creating new branch
+4329 PSDB - Referenced ppdb object not found
+4330 PSDB - Pipe length not defined where it should be defined
+4331 PSDB - Unexpected element pointer
+4332 PSDB - Branch not found
+4333 PSDB - Failure open model subview
+4334 PSDB - Impossible connection number
+4335 PSDB - Invalid object name
+4336 PSDB - Extra connection information attribute not found
+4337 PSDB - Conflicting co-ordinate data
+4338 PSDB - Bad call of lock co-ordinate routines
+4339 PSDB - Failure converting to equipment
+4350 PSDB - Previously stored attribute is missing
+4610 PPDB - Erroneous element pointer
+4611 PPDB - Erroneous element type
+4612 PPDB - Erroneous element size
+4613 PPDB - Erroneous element structure
+4620 PPDB - Error creating object name (names too long)
+4621 PPDB - Error splitting object name (wanted term does not exist)
+4640 PPDB - Project not current
+4641 PPDB - Position not current
+4642 PPDB - Function not current
+4643 PPDB - Pipe not current
+4644 PPDB - Pipe sketch not current
+4660 PPDB - Project already exists
+4661 PPDB - Position already exists
+4662 PPDB - Function already exists
+4663 PPDB - Pipe already exists
+4664 PPDB - Pipe sketch already exists
+4670 PPDB - Project does not exist
+4671 PPDB - Position does not exist
+4672 PPDB - Function does not exist
+4673 PPDB - Pipe does not exist
+4674 PPDB - Pipe sketch does not exist
+4680 PPDB - Subordinate element current
+4681 PPDB - Object and reference element do not correspond
+4682 PPDB - Erroneous component limit
+4683 PPDB - Element with spec. ID already exists
+4684 PPDB - Element with spec. ID does not exist
+4685 PPDB - Erroneous connection reference
+4686 PPDB - Too many part elements in one material
+4690 PPDB - Referenced part not found in PSDB
+4691 PPDB - Sketch limit not allowed
+4692 PPDB - PSDB not current
+4693 PPDB - Element not found in PSDB
+4694 PPDB - Part not found in PSDB
+4695 PPDB - PCM-attribute not found in PSDB
+4801 PPDB - Erroneous font number
+4802 PPDB - Contour attribute not found
+4803 PPDB - Error in reading drawing form
+4804 PPDB - Invalid format of bending machine attribute
+4901 PPDB - Pipe reference in common area QWP60 not found
+4902 PPDB - Maximum number of reference points  in pipe sketch exceeded
+4903 PPDB - More than three connections
+5000 PCDB - Invalid component type
+5001 PCDB - Invalid component group
+5002 PCDB - Invalid component subgroup
+5003 PCDB - Invalid pressure class
+5004 PCDB - Failure reading component
+5005 PCDB - Failure deleting component
+5006 PCDB - Failure reading search object
+5007 PCDB - Failure deleting search object
+5008 PCDB - Failure storing component
+5009 PCDB - Failure listing component
+-500 Empty geometry object.
+5010 PCDB - Failure storing search object
+5011 PCDB - Nominal diameter could not be calculated
+5012 PCDB - No search mask exists for given component type
+5013 PCDB - Search object not found
+5014 PCDB - Failure creating MIS input
+-501 Empty table object.
+-502 The given points are collinear.
+-503 Undefined axis.
+-504 Incorrect storing of plane.
+-505 Coordinates in wrong order.
+-506 Incorrect storing of space curve.
+-507 The space curve consists of more than one curve branch.
+-508 Space curve not single-valued with respect to  the given coordinate.
+-509 Undefined direction.
+-510 No part of the curve inside the given  interval.
+-511 Incorrect storing of cylinder.
+-512 Incorrect storing of surface or surface  element.
+-513 Intersection curve missing.
+-514 Attribute 1 missing.
+-515 Attribute 102 missing.
+-516 Wrong type of geometry. The curve is not a space curve.
+-517 The curve plane is perpendicular to the  coordinate axis of the given coordinate.
+-518 The two space curves are of different types.
+-519 Incorrect definition of surface.
+-520 Incorrect definition of shell plate.
+-521 Incorrect definition of curve.
+-522 Impossible to draw a generatrix in the surface  element at the desired coordinate.
+-523 Incorrect storing of surface element.
+-524 The specified contour missing.
+-525 Limit outside the contour.
+-526 Not allowed to call the procedure.
+-527 Incorrect part code.
+-528 The ending point for the contour does not  coincide with the starting point of the next  contour.
+-529 Contour 0 is not closed.
+5301 PSDB - Failure activating once found component
+5302 PSDB - Failure activating once found part
+5304 PSDB - Some kind of error in machine bending object
+5305 PSDB - Failure cut line torus
+5306 PSDB - Component contains erroneous information on component data bank
+-530 The specified contour consists of a point.
+5311 PSDB - Invalid connection description in frame pipe
+5312 PSDB - Default name not found
+-531 Part greater than the whole.
+-532 Starting position has not been defined.
+-533 The starting position does not coincide with  the starting point of the first contour.
+-534 Invalid combination of information within a  contour of a tooling object.
+-535 Empty contour in a tooling object.
+-536 Incorrect combination of parameter values
+-537 Given coordinate outside KRANGE.
+-538 Undefined plane.
+-539 The specified corner does not exist.
+-540 The given plane is not perpendicular to the  x-axis or the z-axis.
+-541 Wrong type of space curve.
+-542 The calculated area is negative.
+-543 No tool path has been defined.
+-544 The given vectors are not perpendicular.
+-545 The tool is not in ON-position.
+-546 Starting position has already been defined.
+-547 No tool compensation has been defined.
+-548 Undefined restart point.
+-549 The current tool position is not on the contour  at the call.
+5500 Point outside contour in the 3D cat-object
+-550 Limit outside the surface.
+-551 Attribute 101 missing.
+-552 The chosen projection is unsuitable.
+-553 Attribute 103 missing.
+-554 The given planes are not perpendicular.
+-555 Wrong data type in CO-0.
+-556 The given planes are parallel.
+-557 Wrong tolerance.
+-558 Incorrect limits for the space curve.
+-559 Unallowed character.
+5600 General error writing data to PDI database
+-560 The two objects do not have identical 102  attributes.
+-561 The two planes are not parallel.
+-562 The given points do not lie in the same plane.
+-563 Notch with same definition already exist
+-564 Given TAG already exists.
+6001 Stiffener missing.
+6002 Flange missing.
+6003 Transformation vector in SBH2-format missing.
+6004 Unrecognized end cut code.
+6005 Unrecognized connection code.
+6006 101 - attribute missing.
+6007 213 - attribute missing.
+6008 Jumbo panel scheme has not been executed.
+6009 No statement in the jumbo scheme created the current part.
+6010 Wrong chamfer code.
+6011 Tag attribute already opened for updating.
+6012 Restoring not allowed, tag attribute not open for updating.
+6013 Size exceeded in tag attribute area.
+6014 Tag attribute not opened for current panel.
+6015 Tag attribute not properly opened.
+6016 Unrecognized profile type.
+6017 Stiffener or flange attribute not found.
+6018 Picture object does not exist.
+6019 Attribute type 5 missing in interpretation object.
+-601 Denoted longitudinal or stiffener not found at  given coordinate.
+6020 Frame missing.
+6021 Drawing plane missing.
+6022 Tag attribute not found.
+6023 Panel to define the drawing plane is missing on the data bank.
+6024 Invalid level for subpicture element.
+6025 Transformation attribute (102) missing.
+6026 The panel boundary is missing or empty.
+6027 Missing application data in level 1 subpicture.
+6028 Missing application data in level 2 subpicture.
+6029 End cut table missing.
+-602 No intersection point found in the given  direction.
+6030 Bad stiffener reference.
+6031 Frame, vertical or waterline missing on the data bank.
+6032 Value of scale is zero.
+6033 The given point does not lie on the panel (or its plates have been incorrectly defined)
+6034 Developed curve area in SG003D is full.
+6035 The panel is not plane.
+6036 Intersection line missing.
+6037 Invalid limit number.
+6038 Shell profile part not found in the databank.
+6039 No intersection with the given line.
+-603 Denoted stiffener missing.
+6040 Multiple intersections with the given line.
+6041 Insufficient or inconsistent input for a curve segment.
+6042 Standard bracket object not found in the databank.
+6043 The planes of the two panels are close to being parallel.
+6044 The two panels do not intersect.
+6045 Invalid definition of direction.
+6046 The profile does not intersect the given plane.
+6047 Panel missing.
+6048 Pillar missing.
+6049 Def. of side invalid or missing.
+-604 Incorrect type of cutout.
+6050 Longitudinal or transversal missing.
+6051 103 - attribute missing.
+6052 An object of a different type with the same name already exists in the work area.
+6053 The object is not a block object.
+6054 Incorrect number of profile parameters.
+6055 The given object is not a space curve.
+6056 No intersection with the hole contour.
+6057 The profile does not intersect the given plane.
+6058 1 - attribute not found.
+6059 Incorrect combination of cutout and profile type.
+-605 Warning: B > A for elliptical or oval hole. The values are exchanged and the procedure  continues.
+6060 Translation of tag into stiffener number failed.
+6061 Two corners of the panel coincide (one of the boundaries not needed?).
+6062 End cut table empty.
+6063 Error in cutout definition.
+6064 Cutout code not found.
+6065 Impossible to generate cutout.
+6066 Given position number for bracket BVA or BVB out of range.
+6067 Too short dist. from bracket corner to prof. trace
+6068 Denoted seam missing.
+6069 The program not running in GRP mode.
+-606 Dummy interval of longitudinal at given  x-coordinate.
+6070 GRP object missing.
+6071 Incorrect laminate code.
+6072 The given flange or limit must be straight.
+6073 Structure reference object not found.
+6074 HOLE/NOTCH/CUTOUT attribute in profile not found.
+6075 The given elements are on different sides of the mould plane.
+6076 Contradictory input.
+6077 Stiffener with given tag does not exist.
+6078 The stiffener must be identified by its number.
+6079 First boundary should be a shell curve.
+-607 Incorrect type of hole.
+6080 The panel is outside the block limits.
+6081 A fatal error has been detected by the foreign surface system, connected via SBSI.
+6082 No panel along the given limit.
+6083 No bevelling defined in the given point.
+6084 The given point lies more than 25 mm (=50*QPTOL) from the boundary of the adjoining panel.
+6085 The 102-attribute (TRA) is incorrect.
+6086 No intersection with (at least one of) the given stiffener(s).
+6087 Distance between profile endpoints too small.
+6088 Position of flange knuckle outside flange (or interfering with arc of flange end ).
+6089 Bracket toe has incompatible parameters.
+-608 Incorrect type number of connection.
+6090 Incorrect definition of NOTCH/HOLE.
+6091 Incorrect notch type in corner.
+6092 Unreasonable angle for notch.
+6093 Unreasonable parameter for NOTCH/HOLE.
+6094 Erroneous angle at flange end - no flange set.
+6095 Flange default file error - run SF407D for diagnosis.
+6096 Requested flange type not found in flange definition file.
+6097 Impossible to calculate geometry of folded flange end.
+6098 Resulting folded flange too short.
+6099 Unrecognized bracket type.
+-609 Object name not identical with any of the references in attribute 101.
+6100 C-measure of bracket incorrect or missing
+6101 A-measure of bracket too large
+6102 Too large dist. betw. profiles in their plane
+6103 Too large dist. betw. profiles perp. to their plane
+6104 Too large angle between bracket and profile planes
+6105 Bracket parameter to be calculated given by user
+6106 No intersecting stiffener/flange found
+6107 Height of flange is undefined. No flange set.
+6108 Material thickness is undefined.
+6109 Error in bracket geometry. Toes do not fit together.
+-610 Number of intersection points = 2.
+6110 Undefined side of stiffener/flange on bracket.
+6111 Notch could not be inserted in bracket contour.
+6112 Error while calculating geometry of bracket toe.
+6113 Error while calculating geometry of folded flange.
+6114 Error while calculating bracket profile.
+6115 The plane erroneously defined
+6116 Toe type and folded flange end type are incompatible.
+6117 Unknown toe type of bracket.
+6118 Denoted surface object not found.
+6119 Radius of 'R-notch' = 0. No notch generated.
+-611 The first reference in attribute 101 is not a  reference to a frame.
+6120 B-measure of bracket missing.
+6121 Max. number of holes etc. exceeded in profile object.
+6122 No (or too small) gap between profiles.
+6123 Too short lug of (E-type) bracket.
+6124 Impossible to calculate bkt. parameters. Give them
+6125 Edge (side) of flange undefined for bracket placing
+6126 The outer contour could not be recreated with notches/cutouts.
+6127 Flange end type not found in flange definition file.
+6128 Flange width negative.
+6129 Position of marking line not within flange width.
+-612 Incorrect type of profile.
+6130 Symmetry code for panel not given.
+6131 Bracket object not found in DB.
+6132 Given object not a panel.
+6133 Symmetry code of panel and part inconsistent.
+6134 SB and PS specific holes must not intersect a seam.
+6135 SB/PS specific holes must not intersect the boundary.
+6136 More intervals in WELD than boundaries
+6137 Multiple cutout definitions for one profile
+6138 Tag not unique - add selecting line.
+6139 Unreasonable end cut parameter.
+-613 Elements on different sides or mould plane.
+6140 Failing intersection between shell seams
+6141 Multiple definition of plate
+6142 Unequal thicknesses or qualities at knuckle.
+6143 Limits of plane plate do not intersect
+6144 Failing intersection between shell curves and coordinates
+6145 Profile type not allowed.
+6146 Bracket not found.
+6147 Error when generating geometry of hole/notch/cutout
+6148 No intersection between profile and seam.
+6149 Only one profile allowed for BVB bracket
+-614 The CTO is not a longitudinal table.
+6150 Profile not found.
+6151 There is no current panel object.
+6152 Object is not plane panel object.
+6153 Too many seams intersect in one point
+6154 Notch/Cutout interfere
+6155 There is no current view.
+6156 Top. point with given number already exists
+6157 Invalid corner number
+6158 Topological point missing
+6159 Unrecognized  def. mode of topological point
+-615 Denoted longitudinal missing in longitudinal  table.
+6160 Intersected panel generates less than two contours (plate thickness missing?).
+6161 Intersected panel generates more than two contours (panel plane incorrect?).
+6162 Panel locked by another user
+6163 Intersection was not found
+6164 Conv. of point XYZ --> UV failed
+6165 Conv. of line X/Y/Z --> UVT failed
+6166 Unreasonable corner angle of bracket.
+6167 Perp. distance to both curves not allowed.
+6168 Intersect. point could not be moved as spec.
+6169 Points to def. line coincide
+-616 The object is not a hull reference object.
+6170 Component attribute/contour series full
+6171 Corrupt component attribute
+6172 Jumbo and part panel must have the same transformation.
+6173 Jumbo and part panel cannot have the same name.
+6174 Error in part panel scheme.
+6175 Jumbo panel does not exist.
+6176 Jumbo panel and part panel have incompatible storing codes.
+6177 Denoted curve object not found.
+6178 No surface reference found on curve object (att. 105)
+6179 No intersection with denoted pipe
+-617 Warning: Impossible to generate cutout. The procedure continues with the next cutout.
+6180 Missing end cut parameter
+6181 Erroneous data in contour or attribute handling
+6182 Connection to given bracket failed.
+6183 Could not open file associated with SBH_CUTOUT_MACRO
+6184 Could not interpret file associated with SBH_CUTOUT_MACRO
+6185 Cutout definition macro aborted.
+6186 Cutout definition macro not found.
+6187 Parameter error in cutout definition macro.
+6188 Empty/invalid cutout contour delivered from macro.
+6189 Invalid weld info delivered from cutout macro.
+-618 Incorrect identification string.
+6190 Profile height is too small or too big.
+6191 Connection angle curve has not been calculated
+6192 No bevel could be determined for this input combination
+6193 Panel side could not be calculated
+6194 Bevel attribute could not be packed
+6195 Bevel angle on adjacent panel limit is varying
+6196 Bevel on adjacent panel limit is not explicitly given
+6197 The limit does not reference an adjacent panel
+6198 Bevel on adjacent panel limit could not be determined
+6199 Bevel interval could not be divided at cutouts
+-619 Denoted contour does not contain a hole.
+6200 Notch missing.
+6201 Transformation data missing in current view.
+6202 Unknown clip code.
+6203 The file assigned to SBH_CLIPS_MACRO was not found.
+6204 Clip control file error - run INITHULL for diagnosis
+6205 Cutout attribute was not found.
+6206 The group number does not exist within the panel.
+6207 Clip definition macro aborted during execution.
+6208 Clip definition macro not found.
+6209 Parameter error in clip definition macro.
+-620 Incorrect geometry type.
+6210 Empty/invalid clip contour delivered from macro.
+6211 Invalid weld info delivered from clip macro.
+6212 Seam with given number already exists.
+6213 Profile with given number already exists.
+6214 Bracket with given number already exists.
+6215 Object in work area is not a CAT object.
+6216 Clip contour with given number already exists.
+6217 Invalid clip contour number - must be < 32767.
+6218 Invalid or undefined thickness for clip.
+6219 The clip type is invalid for the profile type.
+-621 Parameter string is not empty.
+6220 No licence for extended clip handling.
+6221 Error encountered in reading I/U-bar file. Run INITHULL for details.
+6222 Number of boundaries must not exceed 12.
+6223 Cutout for bevel cutting is overlapped.
+6224 Zero length profile.
+6225 Denoted object not plane panel or curve.
+6226 Side info in main ship directions only.
+6228 Insufficient/Irrelevant (side?) info for bracket.
+6229 Connection to bracket arm undefined.
+-622 Denoted notch missing.
+6230 A-measure undefined.
+6231 C-measure undefined.
+6232 Position of C-arm undefined.
+6233 Elements on different sides.
+6234 B-measure undefined.
+6235 Superfluous A-measure.
+6236 Superfluous B-measure.
+6237 Stiffener needed but not given.
+6238 Material-side must be given.
+6239 Radius must be given.
+-623 Flange missing.
+6240 Panel with profile not be read from DB.
+6241 Profile for bracket connection not defined.
+6242 First limit should not have any profile reference.
+6243 Incorrect comb. of input.
+6244 Stiffener with given number already exists.
+6245 Pillar with given number already exists.
+6246 Flange with given number already exists.
+6247 Bracket with this toetype not supported in this syntax.
+6248 Overlap not allowed on both arms.
+6249 Toetype and connectiontype do not match.
+-624 Impossible to generate outer contour of a  panel.
+6250 Shell profile reference only as first limit.
+6251 Second limit must be current panel
+6252 No intersection with any subpanels found.
+6253 A sub-panel or its attribute not found.
+6254 Main panel missing.
+6255 Mismatching connection codes between sub-panels.
+6256 Block locked by another user.
+6257 Externally defined profile set missing.
+6258 Erroneous index in external profile set.
+6259 The profile is too far away from intersecting plane or on wrong side
+-625 Incorrect stiffener number.
+6260 No profile to attach to found.
+6261 Toetype A not supported in this syntax.
+6262 Toetype B not supported in this syntax.
+6263 Illegal combination of toes.
+6264 Illegal combination of toe & connection (arm A).
+6265 Illegal combination of toe & connection (arm B).
+6266 Direction in MSIDE illegal.
+6267 Given bevel type is not of variable type.
+6268 Angles missing for given variable bevel type (VAR or A).
+6269 SET missing or given SET missing in bevel control file.
+-626 Incorrect type of bracket.
+6270 H_TOT must be given for the current (arm-A) toetype.
+6271 No RANGE defined for selected bevel code and given thickness
+6272 Footpoint calculation failed in panel section.
+6273 Eggbox cutout: Undefined cutout orientation.
+6274 Eggbox cutout: Not two intersection points with outer contour.
+6275 Eggbox cutout: Panel contours have no common point.
+6276 Eggbox cutout: Cutouts in same direction.
+6277 Ellipse could not be well approximated by spline curve
+6278 Too short distance between the two points.
+6279 Bracket edge cannot be attached directly against shell
+-627 Not consecutive order number for seam.
+6280 Unreasonable bevel knuckle angle (abs(angle) > 30).
+6281 Bevel control file error - run INITHULL for diagnosis.
+6282 Erroneous bevel type for knuckled bevel angle.
+6283 No arc found in free side of bracket.
+6284 Unallowed profile type for overlap
+6285 Improper relative location of profiles
+6286 Toe radius cannot be created due to start angle.
+6287 Bracket parameter should be positive.
+6288 Unreasonable value for bracket toe radius.
+6289 Hole missing.
+-628 Not consecutive order number for weld  interval.
+6290 Doubling plate attribute could not be packed.
+6291 Seam coinciding with other seam/limit.
+6292 Mismatching plate contours.
+6293 Error in use of polar coordinates.
+6294 TAP attribute could not be packed
+6295 Mismatch between corner and limit
+6296 Invalid TAP type
+6297 No intersection between seam and hole
+6298 No intersection between seam and notch
+6299 No intersection between seam and cutout
+-629 Denoted contour does not contain a bracket.
+6300 No intersection between seam and limit
+6301 An object of a different type with the same name already exists in the data bank.
+6302 Incorrect combination of input for this bracket syntax
+6303 Shell plate edges could not be projected on given plane
+6304 The given object is not a shell plate
+6305 Numerical constant does not exist
+6306 Topological point not allowed as numerical constant
+6307 NUM attribute could not be packed
+6308 Numerical constant with the order number already exists
+6309 Not possible to present swage geometry
+-630 Denoted seam missing.
+6310 Invalid type of swaging
+6311 Swage attribute could not be packed
+6312 Insufficient information for position of bracket
+6313 NUM expression could not be evaluated
+6314 Evaluation of bracket limit from surface failed
+6315 Seam as block limit only allowed for Design Panels
+6316 Part panel boundary limit not coinciding with original one
+6317 Modifying Production Panel location not allowed
+6318 Modifying Production Panel boundary not allowed
+6319 Modifying Design Panel boundary/block seam arrangement not allowed here
+-631 Incorrect type of end cut.
+6320 Bracket depth not allowed for this bracket type
+6321 Bracket depth too large
+6322 Connected Design panel could not be activated
+6323 Connected Production panel(s) could not be activated
+6324 Seam as block limit defined by a curve is not allowed
+6325 Block and Panel are of different type (Design/Production)
+6326 Seam not allowed in swage panel
+6327 Swage only allowed in one plate panel
+6328 Unreasonable inclination angle
+6329 Incorrect bevel code.
+-632 The given point does not lie on the panel (or plates incorrectly defined).
+6330 Radius (R) must be given when arm lengths are not equal
+6331 Creation of managed hole not allowed.
+6332 Unallowed change of managed hole.
+6333 Deletion of managed hole not allowed.
+6334 Consecutive boundaries are identical
+6335 Connection to given panel failed for bracket toe
+6336 Connection failed to mirrored profile on current panel 
+6337 Bracket definition object not installed.
+-633 The given point lies on a seam.
+6344 Creation of managed curve not allowed.
+6345 Unallowed change of managed curve.
+6346 Deletion of managed curve not allowed.
+-634 Unspecified error due to numerical unsharpness etc.
+-635 Not consecutive order number for plate.
+-636 Incorrect definition of plate thickness.
+-637 Incorrect definition of plate limits.
+-638 The given limit number not found in attribute  101.
+-639 Incorrect definition of outer contour.
+-640 Measure of bracket missing or incorrect.
+-641 Hull object missing.
+-642 Block object missing.
+-643 Reference to panel object missing.
+-644 Impossible to get plate thickness on adjacent  panel
+-645 Limit number or flange number not given.
+-646 The origin of the uvw-system does not lie in  the xz-plane.
+-647 Incorrect panel name.
+-648 Flange or stiffener number not given.
+-649 Displacement specified for a limit which is not  a straight line.
+6500 The object is not a subsurface object.
+6501 Invalid subsurface structure, supposed curve head element not found.
+6502 Invalid subsurface structure, supposed curve element not found
+6503 Invalid subsurface structure, supposed patch group element not found
+6504 Invalid subsurface structure, supposed patch element not found
+6505 Invalid subsurface structure, supposed edge element not found
+6506 Invalid subsurface structure, supposed node reference element not found
+6507 Invalid subsurface structure, supposed reference to node reference element not found
+6508 Invalid subsurface structure, supposed node element not found
+6509 Invalid subsurface structure, supposed point element not found
+-650 Incorrect type of notch.
+6510 The number of edges that bound a patch must not exceed 16.
+6511 The number of edges that bound a subsurface must not exceed 400
+6512 An attempt has been made to create more than one patch on one side of an edge
+6513 The angle between two edge tangent vectors in a node point should be greater than 2.5E-5 radians
+6514 Mismatch between the internal representation of the curve net and the curve object
+6515 The number of edges that end at the node exceeds the supposed number
+6516 Unsupported intersecting surface type
+6517 Improperly defined plane. Bad normal to the plane
+6518 Impossible to create a curve part between the given points with the given tangents
+6519 Invalid segment type (should be -3 or 3)
+-651 Impossible to set notch.
+6520 Invalid geometry code (should be 1 or 2)
+6521 Failure in intersection
+6522 Invalid projection code (should be 1,2 or 3)
+6523 Invalid format of external cylinder object
+6524 Improperly defined cylinder
+6525 Failure during the creation of a patch due to improperly defined boundary edges.
+6526 Combination of intersection points failed
+6527 Invalid format of the intersection point list
+6528 The system failed to decide the direction of the surface normal.
+6529 Incorrect definition of combined seam
+6530 Marking object missing (__SBHH_PLANE_DEFINITIONS_)
+6531 Data bank not open (SB_OGDB)
+6532 Error in plane definition object (__SBHH_PLANE_DEFINITIONS_)
+6533 Reference plane missing
+6534 Failure creating marking reference
+6540 Error when generating geometry for Hook - Fillet radius error when adding radius ending.
+6541 Error when generating geometry for Hook - Gaps overlaps.
+6542 Error when generating geometry for Hook - Radius equal or less than zero.
+6543 Error when generating geometry for Hook - Gap equal or less than zero.
+-652 The mould plane is not a principal plane.
+-653 Impossible to reflect panel.
+-654 Impossible to define plate due to numerical  unsharpness, etc.
+-655 Bracket object missing.
+-656 Impossible to find ship letter or letters.
+-657 Not standardized measure for a bracket which  may only occur as a standard bracket.
+-658 No gap of denoted longitudinal at the panel  in the CO.
+-659 Too great difference between the positions of the involved profiles.
+6600 There are reference-points referring to this point and it can therefore not be deleted.
+6601 The curve list cannot be terminated, because the list is not empty.
+6602 The point list cannot be terminated, because the list is not empty.
+6603 Invalid projection parameter.
+6604 Development error. ( Only used during tests)
+6605 No refresh file is free for curves
+6606 No refresh file is free for points
+6607 No curve is highlighted
+6608 No point is highlighted
+6609 The point doesn't exist in the list containing all new points.
+-660 Definition of profile side for bracket missing  or incorrect.
+6610 Invalid activity parameter
+6611 Invalid knuckle point reference.
+6612 Invalid element pointer.
+6613 The deletion of the point can not be undone because the point isn't marked as "deleted".
+6614 To many references to one invisible point.
+6615 A reference link is missing in the structure.
+6616 No contour can be created for this curve
+6617 Error in the model structure
+6618 The surface normal could not be calculated
+6619 A valid projection plane can not be found
+-661 Denoted element on different sides of mould  plane.
+6620 Invalid activity code
+6621 No text has been drawn
+6622 This key already exists in the modified list
+6623 The key was not found in the modified list
+6624 No refresh file is free
+6625 This colour name is not supported
+6626 View pointer not allowed
+6627 There are to many views
+6628 No views have been defined
+6629 Invalid curve type
+-662 Integer absolute greater than 32767.
+6630 Invalid mode parameter
+6631 Invalid size of the message array
+6632 A boundary curve is missing
+6633 No surface or subsurface initiated
+6634 A reprojection of a tangent on a cylinder has failed
+6635 To many subsurfaces referring to one boundary curve
+6636 The curve is not a boundary curve
+6637 The keep array is two small
+6638 A local boundary name is occupied
+6639 The knuckled panel could not be created.
+-663 Unpermitted character in a number.
+-664 Term longer than 24 relevant characters.
+-665 Unpermitted character in a string.
+-666 Delimiter missing.
+-667 Incorrect flange type.
+-668 Illegal bracket designation.
+-669 The two panels have no point in common.
+-670 The given line is not a straight line segment.
+-671 The object is not a structure reference  object.
+-672 Connection impossible due to the relative  position of involved elements.
+-673 Impossible to make cutouts in bracket.
+-674 Connection code not allowed for geometrical  reasons.
+-675 L-measure too great.
+-676 Bracket with overlap not allowed.
+-677 Unallowed value of calculated angle.
+-678 No gap or too small gap of the denoted  longitudinal or stiffener at the panel in  the CO.
+-679 More than one intersection curve between the  two panels.
+-680 The uvw-system is not parallel to the y-axis.
+-681 Attribute 210 missing.
+-682 Not allowed to delete corner.
+-683 Wrong format of attribute 210.
+-684 More than two points of intersection between  adjacent limits.
+-685 Not allowed to connect two limits without a   corner between them.
+-686 The given drawing name is not equal to the name  in the attribute 1.
+-687 CORR not allowed.
+-688 Wrong combination of input for clip.
+-689 Incorrect value of the exponent n in the  equation of the super ellipse.
+6701 Error no manufacturing package found for production item.
+6702 The input source for production part is not found.
+6703 The Hullmark World element (HMKWLD) is missing.
+6900 Open failure of topology file.
+6901 Close failure of topology file.
+6902 Insert failure of topology file.
+6903 Update failure of topology file.
+6904 Delete failure of topology file.
+6905 Search failure of topology file.
+6906 Record in topology file locked.
+6907 Loop in topological relationship detected.
+6908 Module locked.
+6909 Record not found.
+-690 Incorrect input values for an elliptic- rectangular hole.
+-691 The denoted contour does not contain a bracket.
+-692 Unallowed contour number for bracket.
+-693 Undefined position.
+-694 Material thickness or material position  undefined.
+-695 Panel object missing.
+-696 Given master panel is a shadow panel.
+-697 Not allowed to delete a master panel.
+-698 Master panel referred to by given shadow panel missing.
+-699 Warning: Height of lug too short.
+7001 Erroneous data type of geometry element
+7002 Invalid segment, erroneous amplitude
+7003 Invalid segment, zero segment
+-700 Information about side missing or incorrect.
+-701 Impossible to modify geometry.
+-702 No line segment found at (or given line does  not intersect) the given limit.
+-703 Length of folded flange too short.
+-704 Impossible to set flange.
+-705 Wrong type of seam.
+-706 Panel bracket must not contain bracket.
+-707 Undefined direction.
+-708 Too many seams.
+-709 Too many intersection points.
+-710 Compensation already defined for given limit.
+-711 Excess already defined for given limit.
+-712 Incorrect seam.
+-713 Not allowed to create shadow panel for a  bracket panel.
+-714 The object is not a block object.
+-715 Incorrect definition of outer contour. Side missing for COR?
+-716 Warning: Hole is completely outside panel boundary.
+-717 Marking already defined for given limit.
+-718 Given length longer than limit
+-719 Mismatching bevel on adjacent limits
+-720 Mismatching excess on adjacent limits
+-721 Mismatching connection or endcut on adjacent profiles
+8001 No component slot available
+8002 Component not found on data bank
+8003 Component currently locked by another user
+8004 Component already exists on the data bank
+8005 Component has invalid format
+8006 Invalid current component number
+8007 Component not current under given component number
+8008 Component generation too old.Conversion necessary.
+8009 The object is not a component object.
+-800 Specified object missing or is a table object.
+8010 Component not among current components
+-801 A > B in TOH.
+8020 Number of connections do not match
+8027 Page was not found
+8028 Error in component name
+8029 Error handling component without name
+-802 Part of the segment is outside KRANGE or it is impossible to connect the closest segment to  this segment.
+8030 Nominal diameter could not be calculated
+-803 NR is no standard hole for hole type (HTYP)  = 0.
+-804 Specified segment is not a straight line.
+8050 Search object already exists
+8051 Search object bit masks can not be created
+8052 Sorting parameter can not be created
+8053 Expected search object was not found
+8054 Expected search element was not found
+8055 Volume object not found in SBD_VOLUME
+8056 Invalid content of volume object
+-805 Hole type (HTYP) = 1 invalid.
+-806 Specified segment number > number of segments  or = 0.
+-807 NR is no standard hole for hole type (HTYP)  = 2.
+-808 Less than two intersection points between S  and S3.
+-809 NR is no standard hole for hole type (HTYP)  = 3.
+8100 Electric data missing in equipment object
+8101 Too many objects locked
+8102 Try to replace a nonreserved object
+-810 The given object is missing or is a table  object.
+-811 Hole type (HTYP) < 0 or hole type (HTYP) > 3  invalid.
+-812 The given object has no inner contours.
+-813 Hole with given number already exists.
+8201 Invalid list number in collect item list
+8202 Non recognised element in collect item list
+8203 MIS Signal could not be stored
+8204 Error in assembly object: missing reference to node.
+8205 Assembly tree object missing on assembly data bank.
+8206 Creating child assembly: POSITION not child of PARENT!
+8207 Assembly data object already exist on data bank.
+8208 Assembly reference object does not exist.
+8209 Cannot remove top level assembly node.
+8210 Error in assembly tree: cannot remove node element.
+8211 Error when saving autogenerated name in ass.ref.obj.
+8212 Cannot delete tree object: Locked by other user.
+8213 Object is not a top level assembly.
+8214 Invalid user defined assembly name.
+8215 Non-existing assembly data object.
+8216 Failed to lock the assembly reference object.
+8217 Failed to lock assembly data object.
+8218 Assembly name is not unique.
+8219 Attempt to create invalid assembly structure
+8220 Assembly DB need to be converted to M3 format by ph021 utility.
+8500 Too many objects locked
+8501 Try to replace a nonreserved object
+8502 Error in cableway object structure
+8503 Cable databank not connected
+8504 No more cables can be connected to this equipment
+9001 Assembly data object not found
+9002 Assembly data object locked
+-901 Incorrectly stored object.
+9101 The object is not an RSO object
+9102 The RSO is sculptured
+9103 The RSO is knuckled, "subplane" need be selected
+9104 Not enough points to define RSO plane
+9105 Subplane/polygon with given number does not exist
+9106 No intersection with given RSO
+9107 RSO locked by another user
+9108 Intersecting the RSO gives more than one contour, restriction is necessary
+9109 Panels are overlapping at RSO intersection. Panels(s) skipped
+9110 Error intersecting panel at RSO intersection
+9111 Mismatch between panel and RSO contours. Restriction may be necessary
+9112 Error connecting panels at RSO intersection. No thickness compensation.
